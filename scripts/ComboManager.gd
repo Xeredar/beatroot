@@ -7,13 +7,11 @@ var totalBeats = 0
 func hitTheBeat():
 	currentComboCount += 1
 	totalBeats += 1
-	print(currentComboCount)
 	
 func missTheBeat():
 	totalMissedBeats += 1
 	currentComboCount = 0
 	totalBeats += 1
-	print(currentComboCount)
 
 func _ready():
 	var beatManager = get_node("/root/Node2D/BeatManager")
