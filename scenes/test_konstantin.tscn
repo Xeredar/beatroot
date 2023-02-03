@@ -9,7 +9,7 @@ size = Vector2(354, 5)
 [node name="Node2D" type="Node2D"]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(530.723, 336.083)
+position = Vector2(255.723, 184.083)
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
@@ -21,4 +21,4 @@ scale = Vector2(2.75781, 0.046875)
 texture = ExtResource("2_twb3h")
 
 [node name="Character" parent="." instance=ExtResource("1_thqwu")]
-position = Vector2(419, 248)
+position = Vector2(144, 96)
