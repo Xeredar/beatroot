@@ -3,7 +3,7 @@ extends Node
 signal beat_grace_start
 signal beat_grace_end
 
-var beatTextures = [load("res://sprites/icon.svg")]
+var beatTextures = [load("res://sprites/beet_1.png"), load("res://sprites/carrot.png"), load("res://sprites/turnip.png")]
 var speed = 150.0
 var bps = 122.0 / 60.0
 var warmupTime = 3.0
@@ -15,7 +15,7 @@ var timer = 0.0
 
 
 func spawn(position):
-	var beatSprite = BeatScript.new() # Create a new Sprite2D.
+	var beatSprite = BeatScript.new()
 	var beatTexture = beatTextures[randi() % beatTextures.size()]
 	beatSprite.set_texture(beatTexture)
 	beats.push_back(beatSprite)
