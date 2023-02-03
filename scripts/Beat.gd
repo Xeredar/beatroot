@@ -13,6 +13,7 @@ var beatManager: Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	beatManager = get_parent()
+	z_index = 2
 	scale = Vector2(1.0, 1.0)
 	beatManager.connect("beat_grace_start", _set_grace_true)
 	beatManager.connect("beat_grace_end", _set_grace_false)
