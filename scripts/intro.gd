@@ -16,6 +16,7 @@ var current_text = 0
 @onready var text_timer = $TextTimer
 enum states {SLIDE_IN, DISPLAY_TEXT, WAIT}
 var current_state = states.SLIDE_IN
+signal intro_completed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -59,6 +60,7 @@ func _process(delta):
 		speech_label.set_visible_ratio(0)
 		if current_text == texts.size():
 			print("Dialog Finished, starting game!")
+			intro_completed.emit()
 			return
 		current_state = states.DISPLAY_TEXT
 		_play_scene()
