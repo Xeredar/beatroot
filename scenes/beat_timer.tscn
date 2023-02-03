@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckgq61tv35iky"]
+
+[ext_resource type="Texture2D" uid="uid://df4xmgiiewxj6" path="res://sprites/icon.svg" id="1_rvidx"]
+[ext_resource type="Script" path="res://scripts/beat_indicator.gd" id="2_61mqa"]
+
+[node name="Beat Timer" type="Sprite2D"]
+scale = Vector2(0.0625, 1)
+texture = ExtResource("1_rvidx")
+
+[node name="Right Indicator" type="Sprite2D" parent="."]
+position = Vector2(6000, 0)
+texture = ExtResource("1_rvidx")
+script = ExtResource("2_61mqa")
+start_position = Vector2(6000, 0)
+
+[node name="Left Indicator" type="Sprite2D" parent="."]
+position = Vector2(-6000, 0)
+texture = ExtResource("1_rvidx")
+script = ExtResource("2_61mqa")
+start_position = Vector2(-6000, 0)

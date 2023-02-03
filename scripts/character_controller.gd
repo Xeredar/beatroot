@@ -11,7 +11,6 @@ var is_grace: bool = false
 
 func _ready() -> void:
 	if beatmanager != null:
-		print("BeatManager found")
 		beatmanager.connect("beat_grace_start", _set_grace_true)
 		beatmanager.connect("beat_grace_end", _set_grace_false)
 
@@ -23,7 +22,6 @@ func _physics_process(delta) -> void:
 
 	if is_on_floor():
 		current_jumps = 0
-
 
 	if Input.is_action_just_pressed("jump"):
 		if is_grace:
