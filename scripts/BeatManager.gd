@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 signal beat_grace_start
 signal beat_grace_end
