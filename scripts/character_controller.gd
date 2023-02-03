@@ -24,11 +24,15 @@ func _physics_process(delta) -> void:
 	if is_on_floor():
 		current_jumps = 0
 
+
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
-			velocity.y = jump_speed
-		elif current_jumps < extra_jumps and is_grace:
-			velocity.y = jump_speed
+		if is_grace:
+			if is_on_floor():
+				velocity.y = jump_speed
+			elif current_jumps < extra_jumps:
+				velocity.y = jump_speed
+				current_jumps += 1
+		else:
 			current_jumps += 1
 
 
