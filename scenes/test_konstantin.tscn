@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcff5l07jxmj3"]
+[gd_scene load_steps=5 format=3 uid="uid://dcff5l07jxmj3"]
 
+[ext_resource type="Script" path="res://scripts/BeatManager.gd" id="1_7buj0"]
 [ext_resource type="PackedScene" uid="uid://bsos3ann0bf4" path="res://scenes/character.tscn" id="1_thqwu"]
 [ext_resource type="Texture2D" uid="uid://df4xmgiiewxj6" path="res://sprites/icon.svg" id="2_twb3h"]
 
@@ -7,6 +8,7 @@
 size = Vector2(354, 5)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_7buj0")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(255.723, 184.083)
