@@ -1,0 +1,155 @@
+[gd_scene load_steps=12 format=3 uid="uid://cn3ydc7hkr6hi"]
+
+[ext_resource type="Script" path="res://scenes/intro.gd" id="1_ylkge"]
+[ext_resource type="Texture2D" uid="uid://ddx2kdjy4804t" path="res://sprites/talk_bg.png" id="2_ce61s"]
+[ext_resource type="Texture2D" uid="uid://prxi468lbpfe" path="res://sprites/talk_turnip_happy.png" id="3_1w1su"]
+[ext_resource type="Texture2D" uid="uid://cqhfw4wbf61bl" path="res://sprites/talk_turnip_neutral.png" id="3_tm3ra"]
+[ext_resource type="Texture2D" uid="uid://35bd6hhpwima" path="res://sprites/truck.png" id="4_uddm5"]
+[ext_resource type="Texture2D" uid="uid://bi4kavjjxlolf" path="res://sprites/talk_potato_grump.png" id="5_6b2ek"]
+[ext_resource type="Texture2D" uid="uid://cmw65cmi2nkf1" path="res://sprites/talk_potato_hap.png" id="7_b7wns"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wol1u"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="Animation" id="Animation_8o24r"]
+resource_name = "talk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dogquest:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_tm3ra"), ExtResource("3_1w1su"), ExtResource("3_tm3ra")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dogquest:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5ssjj"]
+resource_name = "talk_potato"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Potato:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_6b2ek"), ExtResource("7_b7wns"), ExtResource("5_6b2ek")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Potato:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81ga3"]
+_data = {
+"talk": SubResource("Animation_8o24r"),
+"talk_potato": SubResource("Animation_5ssjj")
+}
+
+[node name="IntroScene" type="CanvasLayer"]
+script = ExtResource("1_ylkge")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ce61s")
+
+[node name="Scene" type="Sprite2D" parent="Background"]
+visible = false
+modulate = Color(1, 1, 1, 0.176471)
+position = Vector2(211, 135)
+texture = ExtResource("4_uddm5")
+
+[node name="Dogquest" type="Sprite2D" parent="."]
+position = Vector2(-100, 118)
+texture = ExtResource("3_tm3ra")
+
+[node name="Potato" type="Sprite2D" parent="."]
+position = Vector2(400, 123)
+texture = ExtResource("5_6b2ek")
+offset = Vector2(0, -3.39416)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wol1u")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="SpeechLabel" type="Label" parent="MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Example Text Wow this is a really long text, I am surprised you are reading all of this amazing text that is great and"
+autowrap_mode = 2
+clip_text = true
+visible_characters = 110
+visible_ratio = 0.938
+
+[node name="TextTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_81ga3")
+}
+
+[connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]
