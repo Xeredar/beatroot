@@ -4,7 +4,7 @@ signal beat_grace_start
 signal beat_grace_end
 
 var beatTextures = [load("res://sprites/beet_1.png"), load("res://sprites/carrot.png"), load("res://sprites/turnip.png")]
-var beatKeys = [KEY_B, KEY_C, KEY_T]
+var beatInputName = ["beet", "carrot", "turnip"]
 var speed = 150.0
 var bps = 122.0 / 60.0
 var warmupTime = 3.0
@@ -17,15 +17,15 @@ var timer = 0.0
 
 func spawn(beatPosition):
 	var beatSprite = BeatScript.new()
-	var randomIndex = randi() % beatTextures.size()
-	var beatTexture = beatTextures[randomIndex]
+	var beatTypeIndex = randi() % beatTextures.size()
+	var beatTexture = beatTextures[beatTypeIndex]
 	beatSprite.set_texture(beatTexture)
 	beats.push_back(beatSprite)
 	add_child(beatSprite)
 	var windowSize = get_viewport().size
 	beatSprite.position = Vector2(beatPosition, 195.0)
 	beatSprite.speed = speed
-	beatSprite.key = beatKeys[randomIndex]
+	beatSprite.inputName = beatInputName[beatTypeIndex]
 
 
 # Called when the node enters the scene tree for the first time.

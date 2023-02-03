@@ -13,7 +13,7 @@ func _process(delta):
 	for child in get_children():
 		if index >= get_child_count():
 			break
-		child.position.x -= 150.0 * delta * 1.0 / index
+		child.position.x -= speed * delta / index
 		if child.position.x <= -960.0:
 			child.position.x += 960.0
 		index += 1
