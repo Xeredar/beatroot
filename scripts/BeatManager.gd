@@ -1,28 +1,50 @@
 extends Node
 
+signal beat_grace_start
+signal beat_grace_end
+
 var beatTextures = [load("res://sprites/icon.svg")]
+var speed = 150.0
+var bps = 122.0 / 60.0
+var warmupTime = 3.0
+var graceTime = 0.1
 
 const BeatScript = preload("res://scripts/Beat.gd")
 var beats = []
-var speed = 122.0
+var timer = 0.0
 
-func spawn(time):
+
+func spawn(position):
 	var beatSprite = BeatScript.new() # Create a new Sprite2D.
 	var beatTexture = beatTextures[randi() % beatTextures.size()]
 	beatSprite.set_texture(beatTexture)
 	beats.push_back(beatSprite)
 	add_child(beatSprite)
 	var windowSize = get_viewport().size
-	beatSprite.position = Vector2(time, windowSize.y * 0.5)
+	beatSprite.position = Vector2(position, windowSize.y * 0.5)
 	beatSprite.speed = speed
 	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for time in range(2, 40):
-		spawn(time * speed)
-
+	var song = load("res://music/song_1_122_bpm.mp3")
+	var player = AudioStreamPlayer.new()
+	add_child(player)
+	player.set_stream(song)
+	player.play()
+	
+	var warmupBeatCount = floor(warmupTime * bps)
+	var beatLength = song.get_length() - warmupBeatCount / bps
+	for beat in range(0, beatLength * bps):
+		spawn(warmupBeatCount * speed + beat / bps * speed)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	timer += delta
+	if timer > 1.0/bps - graceTime * 0.5:
+		beat_grace_start.emit()
+	if timer > 1.0/bps + graceTime * 0.5:
+		beat_grace_end.emit()
+		timer -= 1.0/bps
+		
