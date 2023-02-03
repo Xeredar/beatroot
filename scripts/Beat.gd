@@ -4,6 +4,7 @@ var speed : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	z_index = 2
 	scale = Vector2(1.0, 1.0)
 
 

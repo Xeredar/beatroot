@@ -21,7 +21,7 @@ func spawn(beatPosition):
 	beats.push_back(beatSprite)
 	add_child(beatSprite)
 	var windowSize = get_viewport().size
-	beatSprite.position = Vector2(beatPosition, windowSize.y * 0.5)
+	beatSprite.position = Vector2(beatPosition, 195.0)
 	beatSprite.speed = speed
 
 
