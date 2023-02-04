@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvw8eu6r80yb7"]
 
-[ext_resource type="LabelSettings" uid="uid://b3w8fu1mk1mvm" path="res://sprites/pixelfont_label.tres" id="1_4af0q"]
+[ext_resource type="LabelSettings" path="res://sprites/pixelfont_label.tres" id="1_4af0q"]
 [ext_resource type="Script" path="res://scripts/results_screen.gd" id="1_n7vp0"]
 [ext_resource type="Texture2D" uid="uid://bafcofmnhcobt" path="res://sprites/results.png" id="2_3ywoy"]
 
