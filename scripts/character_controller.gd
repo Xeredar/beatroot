@@ -56,5 +56,5 @@ func end_animation():
 
 func _on_victory_animated_sprite_animation_finished():
 	$VictoryAnimatedSprite.stop()
-	$VictoryAnimatedSprite.set_frame_and_progress(19)
+	$VictoryAnimatedSprite.set_frame_and_progress(19, 0.0)
 	victory_animation_done.emit()
