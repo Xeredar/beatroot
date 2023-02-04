@@ -7,7 +7,7 @@
 
 [node name="BeatManager" type="Node2D" parent="."]
 script = ExtResource("1_pynn3")
-songResourceName = "res://music/song_6_99_bpm.mp3"
+songResourceName = "res://music/song_6_100_bpm.mp3"
 songBPM = 100.0
 beatStartOffset = 0.064
 
