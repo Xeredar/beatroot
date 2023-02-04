@@ -5,6 +5,7 @@ signal beat_grace_end
 
 @export var songResourceName = "res://music/song_1_122_bpm.mp3"
 @export var songBPM = 122.0
+@export var beatStartOffset = 0.0
 @export var graceTime = 0.2
 @export var graceRange = 20.0
 
@@ -110,7 +111,7 @@ func _ready():
 	var warmupBeatCount = floor(warmupTime * bps)
 	var beatLength = song.get_length() - warmupBeatCount / bps
 	var beatCount = (int)(floor(beatLength * bps) + 1)
-	var beatOffset = warmupBeatCount / bps * speed + playerController.position.x
+	var beatOffset = warmupBeatCount / bps * speed + playerController.position.x + beatStartOffset * speed
 	for beat in range(0, beatCount):
 		var beatPosition = beatOffset + beat / bps * speed
 		if skipNextBeat:
