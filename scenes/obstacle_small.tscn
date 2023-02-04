@@ -1,18 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp4ve8x1axtyp"]
+[gd_scene load_steps=2 format=3 uid="uid://bg38rp15rk1ii"]
 
 [ext_resource type="Texture2D" uid="uid://b2uff1tske2q2" path="res://sprites/mole1.png" id="1_02wqn"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_co7y2"]
-radius = 26.0
-height = 80.0
-
-[node name="ObstacleSmall" type="StaticBody2D"]
-collision_layer = 2
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-z_index = 2
+[node name="ObstacleSmall" type="Sprite2D"]
 texture = ExtResource("1_02wqn")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9, 2)
-shape = SubResource("CapsuleShape2D_co7y2")

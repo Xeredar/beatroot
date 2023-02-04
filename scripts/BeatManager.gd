@@ -24,7 +24,7 @@ func spawn(beatPosition):
 		var obstacleObject = obstacleObjects[0].instantiate()
 		add_child(obstacleObject)
 		obstacles.push_back(obstacleObject)
-		obstacleObject.position = Vector2(beatPosition, 185.0)
+		obstacleObject.position = Vector2(beatPosition + 0.5 * speed, 190.0)
 	else:
 		var beatSprite = BeatScript.new()
 		var beatTypeIndex = randi() % beatTextures.size()
