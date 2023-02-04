@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dmegxsdbna7qm" path="res://sprites/bg_1.png" id="4_tmjkv"]
 [ext_resource type="Texture2D" uid="uid://dbyywh6oaan2x" path="res://sprites/fg_0.png" id="5_0db3q"]
 [ext_resource type="Texture2D" uid="uid://doc8phuvpvuj" path="res://sprites/bg_0.png" id="5_2c62w"]
-[ext_resource type="PackedScene" uid="uid://c3c5l0aox62ai" path="res://scenes/tractor.tscn" id="9_joo1n"]
+[ext_resource type="PackedScene" path="res://scenes/tractor.tscn" id="9_joo1n"]
 [ext_resource type="Script" path="res://scripts/MultiplierLabel.gd" id="10_5q3v6"]
 [ext_resource type="Script" path="res://scripts/PointsLabel.gd" id="11_qytww"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="12_453ec"]

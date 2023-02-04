@@ -157,7 +157,7 @@ func _process(delta):
 				if distance / graceRange < perfect_distance:
 					evaluation_string = "PERFECT!"
 					ComboManager.hitPerfectBeat()
-				elif distance < great_distance:
+				elif distance / graceRange < great_distance:
 					evaluation_string = "Great!"
 					ComboManager.hitGreatBeat()
 				hit_evaluation.show_evaluation(evaluation_string)

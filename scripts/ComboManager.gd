@@ -26,10 +26,12 @@ func hitTheBeat():
 
 func hitPerfectBeat():
 	perfectBeats += 1
+	totalPoints += 3 * currentMultiplier
 
 
 func hitGreatBeat():
 	greatBeats += 1
+	totalPoints += currentMultiplier
 
 
 func missTheBeat():
