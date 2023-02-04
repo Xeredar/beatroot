@@ -4,30 +4,38 @@ signal beat_grace_start
 signal beat_grace_end
 
 var beatTextures = [load("res://sprites/beet_1.png"), load("res://sprites/carrot.png"), load("res://sprites/turnip.png")]
+var obstacleObjects = [preload("res://scenes/obstacle_small.tscn")]
 var beatInputName = ["beet", "carrot", "turnip"]
 var speed = 150.0
 var bps = 122.0 / 60.0
 const warmupTime = 3.0
-const graceTime = 0.15
+const graceTime = 0.2
 const graceRange = 20.0
 
 const BeatScript = preload("res://scripts/Beat.gd")
 @onready var playerController : CharacterBody2D = $"../Character"
 var beats = []
+var obstacles = []
 var timer = 0.0
 
 
 func spawn(beatPosition):
-	var beatSprite = BeatScript.new()
-	var beatTypeIndex = randi() % beatTextures.size()
-	var beatTexture = beatTextures[beatTypeIndex]
-	beatSprite.set_texture(beatTexture)
-	beats.push_back(beatSprite)
-	add_child(beatSprite)
-	var windowSize = get_viewport().size
-	beatSprite.position = Vector2(beatPosition, 195.0)
-	beatSprite.speed = speed
-	beatSprite.beatType = beatTypeIndex
+	if randi() % 20 == 0:
+		var obstacleObject = obstacleObjects[0].instantiate()
+		add_child(obstacleObject)
+		obstacles.push_back(obstacleObject)
+		obstacleObject.position = Vector2(beatPosition, 185.0)
+	else:
+		var beatSprite = BeatScript.new()
+		var beatTypeIndex = randi() % beatTextures.size()
+		var beatTexture = beatTextures[beatTypeIndex]
+
+		beatSprite.set_texture(beatTexture)
+		beats.push_back(beatSprite)
+		add_child(beatSprite)
+		beatSprite.position = Vector2(beatPosition, 195.0)
+		beatSprite.speed = speed
+		beatSprite.beatType = beatTypeIndex
 
 
 # Called when the node enters the scene tree for the first time.
@@ -77,3 +85,8 @@ func _process(delta):
 
 	if (pressedButtonCount == 1 && !didHitBeat) || pressedButtonCount > 1:
 		ComboManager.missTheBeat()
+
+	for obstacle in obstacles:
+		obstacle.position.x -= speed * delta
+		if abs(obstacle.position.x - playerController.position.x) < 3.0 && playerController.position.y > 160:
+			ComboManager.collide()

@@ -27,6 +27,7 @@ shape = SubResource("RectangleShape2D_r27ya")
 
 [node name="Character" parent="." instance=ExtResource("1_thqwu")]
 position = Vector2(195, 160)
+collision_layer = 3
 
 [node name="BeatManager" type="Node2D" parent="."]
 script = ExtResource("1_7buj0")
@@ -68,7 +69,7 @@ z_index = 3
 position = Vector2(240, 236)
 scale = Vector2(0.019, 0.3)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Tractor" type="Sprite2D" parent="."]
 texture = ExtResource("9_hlnab")
 centered = false
 

@@ -18,3 +18,10 @@ func missTheBeat():
 	currentComboCount = 0
 	totalBeats += 1
 	currentMultiplier = 1
+
+func collide():
+	totalMissedBeats += 1
+	currentComboCount = 0
+	totalPoints -= floor(totalPoints * 0.1)
+	totalBeats += 1
+	currentMultiplier = 1
