@@ -16,7 +16,7 @@ var move_questgiver = false
 var questgiver_target = Vector2(87, 130)
 var potato_target = Vector2(350, 130)
 var speed = 200
-var texts = ["Hello there y'all! I need sum' helpin' with 'dem there beets!", "But make sure ta harvest to da beat! Don't break my tractor!", "Pawsome!"]
+var texts = ["Hello there y'all! I need sum' helpin' with 'dem there beets!", "But make sure ta harvest to da beat!", "Look out for the moles! You can only jump on the beat!", "I am ready to go!!"]
 var current_text = 0
 @onready var text_timer = $TextTimer
 enum states {SLIDE_IN, DISPLAY_TEXT, WAIT}
@@ -35,7 +35,7 @@ func fade_black_animation_finished(anim_name):
 	if (anim_name == "fade_in_black"):
 		FadeBlack.animation_finished.disconnect(fade_black_animation_finished)
 		FadeBlack.fade_out_black()
-		get_tree().change_scene_to_file("res://scenes/song_3.tscn")
+		get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 
 func start():
 	_play_scene()
@@ -72,7 +72,7 @@ func _process(delta):
 		current_text = current_text + 1
 		speech_label.set_visible_ratio(0)
 		if current_text == texts.size():
-			print("Dialog Finished, starting game!")
+			print("Dialog Finished, going to level select")
 			intro_completed.emit()
 			FadeBlack.fade_in_black()
 		else:
@@ -87,7 +87,7 @@ func _render_text():
 	speech_label.set_text(text)
 	text_timer.set_wait_time(text.length() / 20.0)
 	text_timer.start()
-	if current_text == 2:
+	if current_text == 3:
 		speech_box.set_texture(turnip_speech)
 		animation_player.play("talk")
 	else:

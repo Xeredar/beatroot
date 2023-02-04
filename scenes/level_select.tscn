@@ -1,12 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://beowso80kph88"]
+[gd_scene load_steps=30 format=3 uid="uid://b4mgukpq7dyqm"]
 
-[ext_resource type="Script" path="res://level_select.gd" id="1_cqwa8"]
-[ext_resource type="Texture2D" uid="uid://cbamm0uxs5aee" path="res://sprites/text_board.png" id="1_ijirp"]
-[ext_resource type="Theme" uid="uid://c6wc78uj72tgu" path="res://sprites/pixelfont.tres" id="2_4dnxi"]
-[ext_resource type="LabelSettings" uid="uid://b3w8fu1mk1mvm" path="res://sprites/pixelfont_label.tres" id="3_8upt6"]
-[ext_resource type="FontFile" uid="uid://dox7gol2t7u74" path="res://sprites/kongtext.ttf" id="4_76wst"]
-[ext_resource type="Texture2D" uid="uid://ct8g2l6ondn1n" path="res://sprites/soundOn.png" id="5_cvkgd"]
-[ext_resource type="Texture2D" uid="uid://d1aik63g5soyp" path="res://sprites/playnip.png" id="7_yc6sd"]
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_v00s8"]
+[ext_resource type="Texture2D" uid="uid://cbamm0uxs5aee" path="res://sprites/text_board.png" id="2_rcl7u"]
+[ext_resource type="Theme" uid="uid://c6wc78uj72tgu" path="res://sprites/pixelfont.tres" id="3_xob40"]
+[ext_resource type="LabelSettings" uid="uid://b3w8fu1mk1mvm" path="res://sprites/pixelfont_label.tres" id="4_2h6a0"]
+[ext_resource type="FontFile" uid="uid://dox7gol2t7u74" path="res://sprites/kongtext.ttf" id="5_dksj0"]
+[ext_resource type="Texture2D" uid="uid://ct8g2l6ondn1n" path="res://sprites/soundOn.png" id="6_6xnmg"]
+[ext_resource type="Texture2D" uid="uid://d1aik63g5soyp" path="res://sprites/playnip.png" id="7_5c4xj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4aa6b"]
 
@@ -42,7 +42,7 @@ border_width_bottom = 4
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4h770"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e4dr1"]
-font = ExtResource("4_76wst")
+font = ExtResource("5_dksj0")
 font_size = 12
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xsk60"]
@@ -60,7 +60,7 @@ font_size = 12
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8h3n"]
 
 [node name="LevelSelect" type="CanvasLayer"]
-script = ExtResource("1_cqwa8")
+script = ExtResource("1_v00s8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -88,7 +88,7 @@ layout_mode = 2
 
 [node name="Panel" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ijirp")
+texture = ExtResource("2_rcl7u")
 
 [node name="Song1" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel"]
 layout_mode = 1
@@ -98,7 +98,7 @@ anchor_bottom = 1.0
 offset_right = -46.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_4dnxi")
+theme = ExtResource("3_xob40")
 text = "Song 1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -116,6 +116,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_sysi8")
 
 [node name="Selector" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel"]
 visible = false
+layout_mode = 0
 offset_right = 203.0
 offset_bottom = 50.0
 
@@ -125,7 +126,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gmx0m")
 
 [node name="Panel2" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ijirp")
+texture = ExtResource("2_rcl7u")
 
 [node name="Song2" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel2"]
 layout_mode = 1
@@ -135,7 +136,7 @@ anchor_bottom = 1.0
 offset_right = -46.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_4dnxi")
+theme = ExtResource("3_xob40")
 text = "Song 1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -153,6 +154,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_8mcbh")
 
 [node name="Selector" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel2"]
 visible = false
+layout_mode = 0
 offset_right = 203.0
 offset_bottom = 50.0
 
@@ -162,7 +164,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gmx0m")
 
 [node name="Panel3" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ijirp")
+texture = ExtResource("2_rcl7u")
 
 [node name="Song3" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel3"]
 layout_mode = 1
@@ -172,7 +174,7 @@ anchor_bottom = 1.0
 offset_right = -46.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_4dnxi")
+theme = ExtResource("3_xob40")
 text = "Song 1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -190,6 +192,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_whwfu")
 
 [node name="Selector" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel3"]
 visible = false
+layout_mode = 0
 offset_right = 203.0
 offset_bottom = 50.0
 
@@ -199,7 +202,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gmx0m")
 
 [node name="Panel4" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ijirp")
+texture = ExtResource("2_rcl7u")
 
 [node name="Song4" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel4"]
 layout_mode = 1
@@ -209,7 +212,7 @@ anchor_bottom = 1.0
 offset_right = -46.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_4dnxi")
+theme = ExtResource("3_xob40")
 text = "Song 1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -227,6 +230,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_dk1bo")
 
 [node name="Selector" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel4"]
 visible = false
+layout_mode = 0
 offset_right = 203.0
 offset_bottom = 50.0
 
@@ -236,7 +240,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gmx0m")
 
 [node name="Panel5" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ijirp")
+texture = ExtResource("2_rcl7u")
 
 [node name="Song5" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel5"]
 layout_mode = 1
@@ -246,7 +250,7 @@ anchor_bottom = 1.0
 offset_right = -46.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_4dnxi")
+theme = ExtResource("3_xob40")
 text = "Song 1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -264,6 +268,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_6ghaw")
 
 [node name="Selector" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel5"]
 visible = false
+layout_mode = 0
 offset_right = 203.0
 offset_bottom = 50.0
 
@@ -273,7 +278,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gmx0m")
 
 [node name="Panel6" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_ijirp")
+texture = ExtResource("2_rcl7u")
 
 [node name="Song6Button" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel6"]
 layout_mode = 1
@@ -294,13 +299,14 @@ anchor_bottom = 1.0
 offset_right = -46.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_4dnxi")
+theme = ExtResource("3_xob40")
 text = "Song 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Selector" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel6"]
 visible = false
+layout_mode = 0
 offset_right = 203.0
 offset_bottom = 50.0
 
@@ -336,7 +342,7 @@ layout_mode = 2
 size_flags_vertical = 1
 text = "Song Name
 Difficulty: Easy"
-label_settings = ExtResource("3_8upt6")
+label_settings = ExtResource("4_2h6a0")
 
 [node name="Artist" type="MarginContainer" parent="MarginContainer2/Panel"]
 layout_mode = 1
@@ -361,7 +367,7 @@ label_settings = SubResource("LabelSettings_e4dr1")
 
 [node name="KonstantineToggle" type="Sprite2D" parent="."]
 position = Vector2(461, 252)
-texture = ExtResource("5_cvkgd")
+texture = ExtResource("6_6xnmg")
 
 [node name="Button" type="Button" parent="KonstantineToggle"]
 anchors_preset = 15
@@ -393,7 +399,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_6hf3r")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_kubmr")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ab8la")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_p8h3n")
-icon = ExtResource("7_yc6sd")
+icon = ExtResource("7_5c4xj")
 
 [connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Panel/Song1Button" to="." method="_on_song_1_button_pressed"]
 [connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Panel2/Song2Button" to="." method="_on_song_2_button_pressed"]
