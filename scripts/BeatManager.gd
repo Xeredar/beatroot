@@ -70,6 +70,12 @@ func _spawnSmallObstacle(beatPosition):
 	add_child(obstacleObject)
 	obstacles.push_back(obstacleObject)
 	skipNextBeat = true
+	var beatKeySprite = BeatKeyScript.new()
+	add_child(beatKeySprite)
+	beatKeys.push_back(beatKeySprite)
+	beatKeySprite.position = Vector2(beatPosition + 0.5 / bps * speed - 8, 220.0)
+	beatKeySprite.setKeyName("␣")
+	beatKeySprite.speed = speed
 
 func _spawnBigObstacle(beatPosition):
 	var obstacleObject = obstacleObjects[1].instantiate()
@@ -77,6 +83,12 @@ func _spawnBigObstacle(beatPosition):
 	add_child(obstacleObject)
 	obstacles.push_back(obstacleObject)
 	skipNextBeat = true
+	var beatKeySprite = BeatKeyScript.new()
+	add_child(beatKeySprite)
+	beatKeys.push_back(beatKeySprite)
+	beatKeySprite.position = Vector2(beatPosition + 0.5 / bps * speed - 8, 220.0)
+	beatKeySprite.setKeyName("␣␣")
+	beatKeySprite.speed = speed
 
 
 # Called when the node enters the scene tree for the first time.
