@@ -36,6 +36,7 @@ const BeatKeyScript = preload("res://scripts/BeatKey.gd")
 var beats = []
 var beatKeys = []
 var obstacles = []
+var obstacleKeys = []
 var timer = 0.0
 var wantsBigObstacle = false
 var skipNextBeat = false
@@ -72,7 +73,7 @@ func _spawnSmallObstacle(beatPosition):
 	skipNextBeat = true
 	var beatKeySprite = BeatKeyScript.new()
 	add_child(beatKeySprite)
-	beatKeys.push_back(beatKeySprite)
+	obstacleKeys.push_back(beatKeySprite)
 	beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
 	beatKeySprite.setKeyName("␣")
 	beatKeySprite.speed = speed
@@ -85,7 +86,7 @@ func _spawnBigObstacle(beatPosition):
 	skipNextBeat = true
 	var beatKeySprite = BeatKeyScript.new()
 	add_child(beatKeySprite)
-	beatKeys.push_back(beatKeySprite)
+	obstacleKeys.push_back(beatKeySprite)
 	beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
 	beatKeySprite.setKeyName("␣")
 	beatKeySprite.speed = speed
@@ -124,7 +125,7 @@ func _ready():
 					wantsBigObstacle = true
 					var beatKeySprite = BeatKeyScript.new()
 					add_child(beatKeySprite)
-					beatKeys.push_back(beatKeySprite)
+					obstacleKeys.push_back(beatKeySprite)
 					beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
 					beatKeySprite.setKeyName("␣")
 					beatKeySprite.speed = speed
@@ -203,12 +204,25 @@ func _process(delta):
 		miss_indicator_child.position = Vector2(240, 60)
 		add_child(miss_indicator_child)
 
-	for obstacle in obstacles:
+	var offsetForBigObstacles = 0
+	for n in obstacles.size():
+		var obstacle = obstacles[n]
+		var obstacleKey = obstacleKeys[n + offsetForBigObstacles]
 		obstacle.position.x -= speed * delta
 		if obstacle.active && abs(obstacle.position.x - playerController.position.x) < 3.0 && playerController.position.y > obstacle.height:
 			ComboManager.collide()
 			obstacle.active = false
 			camera.shake(4)
+		if obstacle.position.x <= playerController.position.x - graceRange:
+				ComboManager.missTheBeat()
+				obstacle.active = false
+				obstacle.hide()
+				obstacleKey.hide()
+				if str(obstacle).contains("ObstacleBig"):
+					offsetForBigObstacles += 1
+					obstacleKeys[n + offsetForBigObstacles].hide()
+					
+					
 
 func play_sound(sound):
 	match (sound):
