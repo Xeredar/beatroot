@@ -105,7 +105,7 @@ func _ready():
 			_spawnBigObstacle(beatPosition)
 			wantsBigObstacle = false
 			continue
-		if randi() % (int)(beatLength) <= 1000:#beat:
+		if randi() % (int)(beatLength) <= beat:
 			if randi() % 20 == 0:
 				if randi() % 3 == 0:
 					wantsBigObstacle = true
