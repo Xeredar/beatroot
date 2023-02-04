@@ -61,7 +61,7 @@ func _spawnBeat(beatPosition):
 		var keyName = InputMap.action_get_events(beatInputName[beatTypeIndex])[0].as_text().split()[0]
 		add_child(beatKeySprite)
 		beatKeys.push_back(beatKeySprite)
-		beatKeySprite.position = Vector2(beatPosition-10, 220.0)
+		beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
 		beatKeySprite.setKeyName(keyName)
 		beatKeySprite.speed = speed
 
