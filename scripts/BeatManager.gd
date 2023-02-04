@@ -104,7 +104,7 @@ func _ready():
 					_spawnSmallObstacle(warmupBeatCount / bps * speed + beat / bps * speed + playerController.position.x)
 			else:
 				_spawnBeat(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
-	
+
 	FadeBlack.animation_finished.connect(fade_black_animation_finished)
 
 func fade_black_animation_finished(anim_name):
