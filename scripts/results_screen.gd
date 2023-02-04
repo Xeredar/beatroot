@@ -7,9 +7,10 @@ func _ready():
 	accuracy_label.set_text("")
 	points_label.set_text("")
 	set_points(ComboManager.totalPoints)
-	set_acuracy(str((ComboManager.totalHitBeats / max((float)(ComboManager.maximumBeats), 1.0)) * 100).pad_decimals(2) + "%")
-	set_perfect_accuracy(str(round(ComboManager.perfectBeats / max((float)(ComboManager.totalHitBeats), 1.0) * 100)) + "%")
-	set_great_accuracy(str(round(ComboManager.greatBeats / max((float)(ComboManager.totalHitBeats), 1.0) * 100)) + "%")
+	var accuracy = str((ComboManager.totalHitBeats / max((float)(ComboManager.maximumBeats), 1.0)) * 100).pad_decimals(2) + "%"
+	var p_accuracy = str(round(ComboManager.perfectBeats / max((float)(ComboManager.totalHitBeats), 1.0) * 100)) + "%"
+	var g_accuracy = str(round(ComboManager.greatBeats / max((float)(ComboManager.totalHitBeats), 1.0) * 100)) + "%"
+	set_acuracy(ComboManager.totalHitBeats, accuracy, ComboManager.perfectBeats, p_accuracy, ComboManager.greatBeats, g_accuracy)
 	$AnimationPlayer.play("blink")
 
 func _process(_delta):
@@ -23,8 +24,13 @@ func _process(_delta):
 func set_points(text):
 	points_label.set_text("Points:\n{points}".format({"points": text}))
 
-func set_acuracy(text):
-	accuracy_label.set_text("Hit beats:\n{accuracy}".format({"accuracy": text}))
+func set_acuracy(hits: int, accuracy: String, p_hits: int, p_accuracy: String, g_hits: int, g_accuracy: String):
+	accuracy_label.set_text("\
+	Hits:\n{hits} ({accuracy})\n\
+	PERFECT:\n{p_hits} ({p_accuracy})\n\
+	Great:\n{g_hits} ({g_accuracy})"\
+	.format({"hits": hits, "accuracy": accuracy, "p_hits": p_hits, "p_accuracy": p_accuracy, \
+	"g_hits": g_hits, "g_accuracy": g_accuracy}))
 
 func set_perfect_accuracy(text):
 	var prev_text = accuracy_label.get_text()

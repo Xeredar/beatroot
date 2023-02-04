@@ -120,6 +120,7 @@ libraries = {
 }
 
 [node name="VacuumAnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.5
 libraries = {
 "": SubResource("AnimationLibrary_wxy4m")
 }
