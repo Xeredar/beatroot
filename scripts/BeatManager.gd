@@ -56,13 +56,13 @@ func _spawnBeat(beatPosition):
 
 	ComboManager.maximumBeats += 1
 
-		var beatKeySprite = BeatKeyScript.new()
-		var keyName = InputMap.action_get_events(beatInputName[beatTypeIndex])[0].as_text().split()[0]
-		add_child(beatKeySprite)
-		beatKeys.push_back(beatKeySprite)
-		beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
-		beatKeySprite.setKeyName(keyName)
-		beatKeySprite.speed = speed
+	var beatKeySprite = BeatKeyScript.new()
+	var keyName = InputMap.action_get_events(beatInputName[beatTypeIndex])[0].as_text().split()[0]
+	add_child(beatKeySprite)
+	beatKeys.push_back(beatKeySprite)
+	beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
+	beatKeySprite.setKeyName(keyName)
+	beatKeySprite.speed = speed
 
 func _spawnSmallObstacle(beatPosition):
 	var obstacleObject = obstacleObjects[0].instantiate()
@@ -73,7 +73,7 @@ func _spawnSmallObstacle(beatPosition):
 	var beatKeySprite = BeatKeyScript.new()
 	add_child(beatKeySprite)
 	beatKeys.push_back(beatKeySprite)
-	beatKeySprite.position = Vector2(beatPosition + 0.5 / bps * speed - 8, 220.0)
+	beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
 	beatKeySprite.setKeyName("␣")
 	beatKeySprite.speed = speed
 
@@ -86,8 +86,8 @@ func _spawnBigObstacle(beatPosition):
 	var beatKeySprite = BeatKeyScript.new()
 	add_child(beatKeySprite)
 	beatKeys.push_back(beatKeySprite)
-	beatKeySprite.position = Vector2(beatPosition + 0.5 / bps * speed - 8, 220.0)
-	beatKeySprite.setKeyName("␣␣")
+	beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
+	beatKeySprite.setKeyName("␣")
 	beatKeySprite.speed = speed
 
 
@@ -122,6 +122,12 @@ func _ready():
 			if randi() % 20 == 0 && beat > beatCount * 0.25:
 				if randi() % 3 == 0 && beat > beatCount * 0.5:
 					wantsBigObstacle = true
+					var beatKeySprite = BeatKeyScript.new()
+					add_child(beatKeySprite)
+					beatKeys.push_back(beatKeySprite)
+					beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
+					beatKeySprite.setKeyName("␣")
+					beatKeySprite.speed = speed
 				else:
 					_spawnSmallObstacle(beatPosition)
 			else:
