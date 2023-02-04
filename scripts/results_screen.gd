@@ -9,6 +9,7 @@ func _ready():
 	set_points(ComboManager.totalPoints)
 	set_acuracy(str((ComboManager.totalHitBeats / max((float)(ComboManager.maximumBeats), 1.0)) * 100) + "%")
 	$AnimationPlayer.play("blink")
+	$AnimationPlayer.play("firefly")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("jump"):
