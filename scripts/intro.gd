@@ -4,6 +4,11 @@ extends CanvasLayer
 @onready var quest_giver : Sprite2D = $Dogquest
 @onready var potato : Sprite2D = $Potato
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var speech_box : Sprite2D = $SpeechBox
+var potato_speech = preload("res://sprites/text_box_p.png")
+var turnip_speech = preload("res://sprites/text_box_t.png")
+var potato_speech_sound = preload("res://sounds/potatoSpeech.ogg")
+var turnip_speech_sound = preload("res://sounds/turnipSpeech.ogg")
 var text_scrolling = false
 var text = ""
 var text_percentage = 0
@@ -46,6 +51,7 @@ func _play_scene():
 func _hide_text():
 	speech_label.set_text("")
 	text_box_node.hide()
+	speech_box.hide()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -74,15 +80,17 @@ func _process(delta):
 
 func _render_text():
 	text_box_node.show()
+	speech_box.show()
 	text = texts[current_text]
 	text_scrolling = true
 	speech_label.set_text(text)
 	text_timer.set_wait_time(text.length() / 20.0)
 	text_timer.start()
 	if current_text == 2:
-		animation_player.play("talk_potato")
-	else:
+		speech_box.set_texture(turnip_speech)
 		animation_player.play("talk")
+	else:
+		animation_player.play("talk_potato")
 	
 func _slide_in_quest_giver():
 	move_questgiver = true
@@ -94,3 +102,4 @@ func _on_text_timer_timeout():
 	_play_scene()
 	animation_player.stop()
 	speech_label.set_visible_ratio(1)
+	$SFX.stop()
