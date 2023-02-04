@@ -1,9 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://b4mgukpq7dyqm"]
+[gd_scene load_steps=30 format=3 uid="uid://ccsn6ccthu706"]
 
 [ext_resource type="Script" path="res://scripts/level_select.gd" id="1_v00s8"]
 [ext_resource type="Texture2D" uid="uid://cbamm0uxs5aee" path="res://sprites/text_board.png" id="2_rcl7u"]
-[ext_resource type="Theme" uid="uid://c6wc78uj72tgu" path="res://sprites/pixelfont.tres" id="3_xob40"]
-[ext_resource type="LabelSettings" uid="uid://b3w8fu1mk1mvm" path="res://sprites/pixelfont_label.tres" id="4_2h6a0"]
+[ext_resource type="Theme" path="res://sprites/pixelfont.tres" id="3_xob40"]
+[ext_resource type="LabelSettings" path="res://sprites/pixelfont_label.tres" id="4_2h6a0"]
 [ext_resource type="FontFile" uid="uid://dox7gol2t7u74" path="res://sprites/kongtext.ttf" id="5_dksj0"]
 [ext_resource type="Texture2D" uid="uid://ct8g2l6ondn1n" path="res://sprites/soundOn.png" id="6_6xnmg"]
 [ext_resource type="Texture2D" uid="uid://d1aik63g5soyp" path="res://sprites/playnip.png" id="7_5c4xj"]

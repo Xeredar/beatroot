@@ -4,7 +4,16 @@ const highscores_data_path: String = "highscores.data"
 
 var highscores: Array
 
-func add_highscore_entry(name: String, highscore: int) -> void:
+func is_new_highscore(points: int) -> bool:
+	if highscores.size() == 0:
+		return true
+	var last_entry = highscores.back()
+	return last_entry != null and points > last_entry[1]
+
+
+func add_highscore_entry(name: String = "Default", highscore: int = 0) -> void:
+	if name.length() > 10:
+		name = name.substr(0, 10)
 	highscores.append([name, highscore])
 	_sort_highscores()
 	if highscores.size() > 10:

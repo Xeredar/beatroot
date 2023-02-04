@@ -16,6 +16,7 @@ extends CanvasLayer
 @onready var play_button : Button = $PlayButton
 @onready var artists_display : Label = $MarginContainer2/Panel/Artist/Label
 @onready var title_display : Label = $MarginContainer2/Panel/TitleAndDifficutly/Label
+@onready var first_time = true
 var konstantin_off = preload("res://sprites/soundOff.png")
 var konstantin_on = preload("res://sprites/soundOn.png")
 var sound_enabled = true
@@ -35,7 +36,10 @@ func _ready():
 	fill_songlist()
 	fill_details()
 
-func _process(delta):
+func _physic_process(delta):
+	if first_time:
+		first_time = false
+		return
 	if Input.is_action_just_pressed("jump"):
 		get_tree().change_scene_to_file("res://scenes/" + allSongScenes[selected_song] + ".tscn")
 	if Input.is_action_just_pressed("down"):

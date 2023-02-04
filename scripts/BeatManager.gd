@@ -140,7 +140,10 @@ func fade_black_animation_finished(anim_name):
 	if (anim_name == "fade_in_black"):
 		FadeBlack.animation_finished.disconnect(fade_black_animation_finished)
 		FadeBlack.fade_out_black()
-		get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
+		if HighScore.is_new_highscore(ComboManager.totalPoints):
+			get_tree().change_scene_to_file("res://scenes/new_highscore.tscn")
+		else:
+			get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq0mlm1mc0rys"]
+[gd_scene load_steps=13 format=3 uid="uid://n7gnc472cbph"]
 
 [ext_resource type="PackedScene" uid="uid://bsos3ann0bf4" path="res://scenes/character.tscn" id="1_eyry8"]
 [ext_resource type="Script" path="res://scripts/BackgroundManager.gd" id="2_y46pm"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dmegxsdbna7qm" path="res://sprites/bg_1.png" id="5_ut85x"]
 [ext_resource type="Texture2D" uid="uid://doc8phuvpvuj" path="res://sprites/bg_0.png" id="6_qquui"]
 [ext_resource type="PackedScene" uid="uid://dj7ed8d44qq2n" path="res://scenes/beat_timer.tscn" id="7_f384k"]
-[ext_resource type="PackedScene" uid="uid://c3c5l0aox62ai" path="res://scenes/tractor.tscn" id="8_teqq6"]
+[ext_resource type="PackedScene" path="res://scenes/tractor.tscn" id="8_teqq6"]
 [ext_resource type="Script" path="res://scripts/MultiplierLabel.gd" id="9_bh7bv"]
 [ext_resource type="Script" path="res://scripts/PointsLabel.gd" id="10_1rdvp"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="11_jrq7a"]

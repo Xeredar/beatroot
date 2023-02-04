@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://blvbk5nk5gl2l"]
+
+[ext_resource type="Texture2D" uid="uid://bafcofmnhcobt" path="res://sprites/results.png" id="1_15bsi"]
+[ext_resource type="LabelSettings" path="res://sprites/pixelfont_label.tres" id="2_kxbyk"]
+[ext_resource type="Script" path="res://scenes/highscore_display.gd" id="3_0miex"]
+[ext_resource type="Script" path="res://scripts/highscore_display.gd" id="3_6u3m7"]
+
+[node name="highscore_display" type="CanvasLayer"]
+script = ExtResource("3_0miex")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_15bsi")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+offset_left = 90.0
+offset_top = 15.0
+offset_right = 390.0
+offset_bottom = 255.0
+
+[node name="Label" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+text = "Highscores
+"
+label_settings = ExtResource("2_kxbyk")
+horizontal_alignment = 1
+script = ExtResource("3_6u3m7")
