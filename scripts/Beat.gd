@@ -19,6 +19,7 @@ func _process(delta):
 
 	if isActive:
 		if playerController.is_on_floor() && Input.is_action_just_pressed(inputName) && (position.x - playerController.position.x) < graceRange:
+			ComboManager.hitTheBeat()
 			isActive = false
 			queue_free()
 		if position.x <= 120:

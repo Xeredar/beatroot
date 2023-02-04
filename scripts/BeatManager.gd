@@ -11,6 +11,7 @@ var warmupTime = 3.0
 var graceTime = 0.15
 
 const BeatScript = preload("res://scripts/Beat.gd")
+@onready var playerController : CharacterBody2D = $"../Character"
 var beats = []
 var timer = 0.0
 
@@ -40,7 +41,7 @@ func _ready():
 	var beatLength = song.get_length() - warmupBeatCount / bps
 	for beat in range(0, beatLength * bps):
 		if randi() % (int)(beatLength) <= beat:
-			spawn(warmupBeatCount * speed + beat / bps * speed)
+			spawn(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
