@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckgq61tv35iky"]
+[gd_scene load_steps=3 format=3 uid="uid://dj7ed8d44qq2n"]
 
-[ext_resource type="Texture2D" uid="uid://df4xmgiiewxj6" path="res://sprites/icon.svg" id="1_rvidx"]
+[ext_resource type="Texture2D" uid="uid://2oaxenmvi2uq" path="res://sprites/icon.svg" id="1_rvidx"]
 [ext_resource type="Script" path="res://scripts/beat_indicator.gd" id="2_61mqa"]
 
 [node name="Beat Timer" type="Sprite2D"]

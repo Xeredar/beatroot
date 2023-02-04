@@ -25,8 +25,10 @@ func _physics_process(delta) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if is_grace:
 			if is_on_floor():
+				beatmanager.play_sound("jump")
 				velocity.y = jump_speed
 			elif current_jumps < extra_jumps:
+				beatmanager.play_sound("jump")
 				velocity.y = jump_speed
 				current_jumps += 1
 		else:

@@ -5,6 +5,11 @@ signal beat_grace_end
 
 var beatTextures = [load("res://sprites/beet_1.png"), load("res://sprites/carrot.png"), load("res://sprites/turnip.png")]
 var obstacleObjects = [preload("res://scenes/obstacle_small.tscn")]
+var suckSound1 = preload("res://sounds/Suck.ogg")
+var suckSound2 = preload("res://sounds/Suck2.ogg")
+var hitSound1 = preload("res://sounds/Hit1.ogg")
+var jumpSound1 = preload("res://sounds/Jump1.ogg")
+var suckSounds = [suckSound1, suckSound2]
 var beatInputName = ["beet", "carrot", "turnip"]
 var speed = 150.0
 var bps = 122.0 / 60.0
@@ -12,6 +17,7 @@ const warmupTime = 3.0
 const graceTime = 0.2
 const graceRange = 20.0
 var timeLeft = 0.0
+@onready var sfx = $"../SFX"
 
 const BeatScript = preload("res://scripts/Beat.gd")
 const BeatKeyScript = preload("res://scripts/BeatKey.gd")
@@ -107,6 +113,7 @@ func _process(delta):
 				beat.isActive = false
 				beat.hide()
 				beatKey.hide()
+				play_sound("suck")
 			if beat.position.x <= playerController.position.x - graceRange:
 				ComboManager.missTheBeat()
 				beat.isActive = false
