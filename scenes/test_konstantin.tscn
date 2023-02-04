@@ -73,9 +73,9 @@ texture = ExtResource("9_hlnab")
 centered = false
 
 [node name="Multiplier" type="Label" parent="."]
-offset_left = 285.0
+offset_left = 240.0
 offset_top = 10.0
-offset_right = 468.0
+offset_right = 470.0
 offset_bottom = 36.0
 text = "Multiplier"
 horizontal_alignment = 2
@@ -84,7 +84,7 @@ script = ExtResource("10_5q3v6")
 [node name="Points" type="Label" parent="."]
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 180.0
+offset_right = 240.0
 offset_bottom = 36.0
-text = "Points: "
+text = "Points"
 script = ExtResource("11_qytww")
