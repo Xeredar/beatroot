@@ -14,7 +14,7 @@ var waitingAnimationType: FadeType = FadeType.none
 func _ready():
 	animationPlayer.animation_finished.connect(_animation_finished)
 
-func _process(delta):
+func _process(_delta):
 	visible = animationPlayer.is_playing()
 	
 func fade_in_out_black():
