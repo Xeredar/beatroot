@@ -1,20 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj7ed8d44qq2n"]
+[gd_scene load_steps=4 format=3 uid="uid://dj7ed8d44qq2n"]
 
-[ext_resource type="Texture2D" uid="uid://df4xmgiiewxj6" path="res://sprites/icon.svg" id="1_hog1n"]
+[ext_resource type="Texture2D" uid="uid://bhg5cgvxmtlt2" path="res://sprites/beat_indicator_0.png" id="1_smu3r"]
+[ext_resource type="Texture2D" uid="uid://xsqsi6o3ouo7" path="res://sprites/beat_indicator_right_0.png" id="2_30b0b"]
 [ext_resource type="Script" path="res://scripts/beat_indicator.gd" id="2_61mqa"]
 
 [node name="Beat Timer" type="Sprite2D"]
-scale = Vector2(0.0625, 1)
-texture = ExtResource("1_hog1n")
+script = ExtResource("2_61mqa")
 
 [node name="Right Indicator" type="Sprite2D" parent="."]
-position = Vector2(6000, 0)
-texture = ExtResource("1_hog1n")
-script = ExtResource("2_61mqa")
-start_position = Vector2(6000, 0)
+texture = ExtResource("2_30b0b")
+offset = Vector2(18, 0)
 
 [node name="Left Indicator" type="Sprite2D" parent="."]
-position = Vector2(-6000, 0)
-texture = ExtResource("1_hog1n")
-script = ExtResource("2_61mqa")
-start_position = Vector2(-6000, 0)
+texture = ExtResource("2_30b0b")
+offset = Vector2(-19, 0)
+flip_h = true
+
+[node name="Center Indicator" type="Sprite2D" parent="."]
+scale = Vector2(0.632, 0.632)
+texture = ExtResource("1_smu3r")
