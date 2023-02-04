@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci0qfbla2ia62"]
+
+[ext_resource type="Texture2D" uid="uid://df4xmgiiewxj6" path="res://sprites/icon.svg" id="1_jxorc"]
+[ext_resource type="Script" path="res://Beat_Miss_Indicator.gd" id="2_lxjy5"]
+
+[sub_resource type="Animation" id="Animation_uar4i"]
+resource_name = "fade"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 5.27803),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f3tvb"]
+_data = {
+"fade": SubResource("Animation_uar4i")
+}
+
+[node name="Beat_Miss_Indicator" type="Sprite2D"]
+z_index = 10
+texture = ExtResource("1_jxorc")
+script = ExtResource("2_lxjy5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f3tvb")
+}

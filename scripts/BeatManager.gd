@@ -20,6 +20,7 @@ var beatKeys = []
 var obstacles = []
 var timer = 0.0
 var skipNextBeat = false
+var beat_miss_indicator: PackedScene = preload("res://scenes/beat_miss_indicator.tscn")
 
 func spawn(beatPosition):
 	if randi() % 20 == 0:
@@ -39,7 +40,7 @@ func spawn(beatPosition):
 		beatSprite.position = Vector2(beatPosition, 195.0)
 		beatSprite.speed = speed
 		beatSprite.beatType = beatTypeIndex
-	
+
 		var beatKeySprite = BeatKeyScript.new()
 		var keyName = InputMap.action_get_events(beatInputName[beatTypeIndex])[0].as_text().split()[0]
 		add_child(beatKeySprite)
@@ -103,6 +104,9 @@ func _process(delta):
 
 	if (pressedButtonCount == 1 && !didHitBeat) || pressedButtonCount > 1:
 		ComboManager.missTheBeat()
+		var miss_indicator_child: Node2D = beat_miss_indicator.instantiate()
+		miss_indicator_child.position = Vector2(240, 60)
+		add_child(miss_indicator_child)
 
 	for obstacle in obstacles:
 		obstacle.position.x -= speed * delta
