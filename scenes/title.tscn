@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://mcevecqsst7g"]
+
+[ext_resource type="Script" path="res://scripts/title.gd" id="1_vdxm6"]
+[ext_resource type="Texture2D" uid="uid://dk238vdyhlcux" path="res://sprites/title_e.png" id="2_m8ogb"]
+[ext_resource type="Texture2D" uid="uid://lpe883e3rfeh" path="res://sprites/title_title.png" id="3_fh6g3"]
+
+[sub_resource type="Animation" id="Animation_wcqiv"]
+resource_name = "Pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleTitle:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 1),
+"transitions": PackedFloat32Array(1, 8.28211, 15.455, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_grj1n"]
+_data = {
+"Pulse": SubResource("Animation_wcqiv")
+}
+
+[node name="Title" type="CanvasLayer"]
+script = ExtResource("1_vdxm6")
+
+[node name="TitleE" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_m8ogb")
+
+[node name="TitleTitle" type="Sprite2D" parent="."]
+position = Vector2(185, 79)
+texture = ExtResource("3_fh6g3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_grj1n")
+}

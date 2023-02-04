@@ -61,9 +61,10 @@ func _process(delta):
 		if current_text == texts.size():
 			print("Dialog Finished, starting game!")
 			intro_completed.emit()
-			return
-		current_state = states.DISPLAY_TEXT
-		_play_scene()
+			get_tree().change_scene_to_file("res://scenes/test_konstantin.tscn")
+		else:
+			current_state = states.DISPLAY_TEXT
+			_play_scene()
 
 func _render_text():
 	text_box_node.show()
