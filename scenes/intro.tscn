@@ -6,15 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cqhfw4wbf61bl" path="res://sprites/talk_turnip_neutral.png" id="3_tm3ra"]
 [ext_resource type="Texture2D" uid="uid://35bd6hhpwima" path="res://sprites/truck.png" id="4_uddm5"]
 [ext_resource type="Texture2D" uid="uid://bi4kavjjxlolf" path="res://sprites/talk_potato_grump.png" id="5_6b2ek"]
-[ext_resource type="FontFile" uid="uid://dox7gol2t7u74" path="res://sprites/kongtext.ttf" id="6_hu0rk"]
+[ext_resource type="Theme" uid="uid://c6wc78uj72tgu" path="res://sprites/pixelfont.tres" id="6_7fcmt"]
+[ext_resource type="Texture2D" uid="uid://b50toesjnxaak" path="res://sprites/text_box.png" id="6_vs3qk"]
 [ext_resource type="Texture2D" uid="uid://cmw65cmi2nkf1" path="res://sprites/talk_potato_hap.png" id="7_b7wns"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wol1u"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
 
 [sub_resource type="Animation" id="Animation_8o24r"]
 resource_name = "talk"
@@ -121,26 +115,27 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="Panel" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wol1u")
+texture = ExtResource("6_vs3qk")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -5.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
 [node name="SpeechLabel" type="Label" parent="MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("6_hu0rk")
+theme = ExtResource("6_7fcmt")
 text = "Example Text Wow this is a really long text, I am surprised you are reading all of this amazing text that is great and"
 autowrap_mode = 2
 clip_text = true
