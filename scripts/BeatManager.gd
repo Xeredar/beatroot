@@ -13,8 +13,10 @@ const graceTime = 0.2
 const graceRange = 20.0
 
 const BeatScript = preload("res://scripts/Beat.gd")
+const BeatKeyScript = preload("res://scripts/BeatKey.gd")
 @onready var playerController : CharacterBody2D = $"../Character"
 var beats = []
+var beatKeys = []
 var obstacles = []
 var timer = 0.0
 var skipNextBeat = false
@@ -37,6 +39,14 @@ func spawn(beatPosition):
 		beatSprite.position = Vector2(beatPosition, 195.0)
 		beatSprite.speed = speed
 		beatSprite.beatType = beatTypeIndex
+	
+		var beatKeySprite = BeatKeyScript.new()
+		var keyName = InputMap.action_get_events(beatInputName[beatTypeIndex])[0].as_text().split()[0]
+		add_child(beatKeySprite)
+		beatKeys.push_back(beatKeySprite)
+		beatKeySprite.position = Vector2(beatPosition-10, 220.0)
+		beatKeySprite.setKeyName(keyName)
+		beatKeySprite.speed = speed
 
 
 # Called when the node enters the scene tree for the first time.
@@ -75,17 +85,21 @@ func _process(delta):
 			pressedButtonCount += 1
 
 	var didHitBeat = false
-	for beat in beats:
+	for n in beats.size():
+		var beat = beats[n]
+		var beatKey = beatKeys[n]
 		if beat.isActive:
 			if playerController.is_on_floor() && beatButtonPressed[beat.beatType] && abs(beat.position.x - playerController.position.x) < graceRange:
 				ComboManager.hitTheBeat()
 				didHitBeat = true
 				beat.isActive = false
 				beat.hide()
+				beatKey.hide()
 			if beat.position.x <= playerController.position.x - graceRange:
 				ComboManager.missTheBeat()
 				beat.isActive = false
 				beat.position.y += 5.0
+				beatKey.hide()
 
 	if (pressedButtonCount == 1 && !didHitBeat) || pressedButtonCount > 1:
 		ComboManager.missTheBeat()
