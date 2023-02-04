@@ -7,8 +7,9 @@ var beatTextures = [load("res://sprites/beet_1.png"), load("res://sprites/carrot
 var beatInputName = ["beet", "carrot", "turnip"]
 var speed = 150.0
 var bps = 122.0 / 60.0
-var warmupTime = 3.0
-var graceTime = 0.15
+const warmupTime = 3.0
+const graceTime = 0.15
+const graceRange = 20.0
 
 const BeatScript = preload("res://scripts/Beat.gd")
 @onready var playerController : CharacterBody2D = $"../Character"
@@ -26,7 +27,7 @@ func spawn(beatPosition):
 	var windowSize = get_viewport().size
 	beatSprite.position = Vector2(beatPosition, 195.0)
 	beatSprite.speed = speed
-	beatSprite.inputName = beatInputName[beatTypeIndex]
+	beatSprite.beatType = beatTypeIndex
 
 
 # Called when the node enters the scene tree for the first time.
@@ -53,3 +54,26 @@ func _process(delta):
 		beat_grace_end.emit()
 		timer -= 1.0/bps
 
+	var beatButtonPressed = []
+	var pressedButtonCount = 0
+	for beatButton in beatInputName:
+		var isPressed = Input.is_action_just_pressed(beatButton)
+		beatButtonPressed.push_back(isPressed)
+		if isPressed:
+			pressedButtonCount += 1
+
+	var didHitBeat = false
+	for beat in beats:
+		if beat.isActive:
+			if playerController.is_on_floor() && beatButtonPressed[beat.beatType] && abs(beat.position.x - playerController.position.x) < graceRange:
+				ComboManager.hitTheBeat()
+				didHitBeat = true
+				beat.isActive = false
+				beat.hide()
+			if beat.position.x <= playerController.position.x - graceRange:
+				ComboManager.missTheBeat()
+				beat.isActive = false
+				beat.position.y += 5.0
+
+	if (pressedButtonCount == 1 && !didHitBeat) || pressedButtonCount > 1:
+		ComboManager.missTheBeat()

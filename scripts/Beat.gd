@@ -1,9 +1,9 @@
 extends Sprite2D
 
 var speed : float
-var inputName : String
+var beatType : int
+
 var isActive = true
-const graceRange = 20.0
 
 @onready var playerController : CharacterBody2D = $"../../Character"
 
@@ -17,12 +17,3 @@ func _ready():
 func _process(delta):
 	position.x -= speed * delta
 
-	if isActive:
-		if playerController.is_on_floor() && Input.is_action_just_pressed(inputName) && (position.x - playerController.position.x) < graceRange:
-			ComboManager.hitTheBeat()
-			isActive = false
-			queue_free()
-		if position.x <= 120:
-			ComboManager.missTheBeat()
-			isActive = false
-			position.y += 5.0
