@@ -24,6 +24,11 @@ func _ready():
 	potato.set_global_position(Vector2(570, 130))
 	_hide_text()
 	start()
+	FadeBlack.animation_finished.connect(fade_black_animation_finished)
+	
+func fade_black_animation_finished():
+	FadeBlack.fade_out_black()
+	get_tree().change_scene_to_file("res://scenes/test_konstantin.tscn")
 	
 func start():
 	_play_scene()
@@ -61,7 +66,7 @@ func _process(delta):
 		if current_text == texts.size():
 			print("Dialog Finished, starting game!")
 			intro_completed.emit()
-			get_tree().change_scene_to_file("res://scenes/test_konstantin.tscn")
+			FadeBlack.fade_in_black()
 		else:
 			current_state = states.DISPLAY_TEXT
 			_play_scene()
