@@ -221,9 +221,9 @@ func _process(delta):
 #				offsetForBigObstacles += 1
 #				obstacleKeys[n + offsetForBigObstacles].hide()
 
-
-
 func play_sound(sound):
+	if ComboManager.konstantinToggle == false:
+		return
 	match (sound):
 		"suck":
 			sfx.stream = suckSounds[randi() % suckSounds.size()]

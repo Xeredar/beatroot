@@ -53,28 +53,35 @@ func fill_details():
 			_difficulty = "Hard"
 	artists_display.set_text("Artist: " + "\n" + allSongArtists[selected_song])
 	title_display.set_text(allSongTitles[selected_song] + "\n" + _difficulty)
+	allSongLabels[selected_song].get_parent().get_child(2).show()
 
 func _on_song_1_button_pressed():
+	allSongLabels[selected_song].get_parent().get_child(2).hide()
 	selected_song = 0
 	fill_details()
 
 func _on_song_2_button_pressed():
+	allSongLabels[selected_song].get_parent().get_child(2).hide()
 	selected_song = 1
 	fill_details()
 
 func _on_song_3_button_pressed():
+	allSongLabels[selected_song].get_parent().get_child(2).hide()
 	selected_song = 2
 	fill_details()
 
 func _on_song_4_button_button_down():
+	allSongLabels[selected_song].get_parent().get_child(2).hide()
 	selected_song = 3
 	fill_details()
 
 func _on_song_5_button_pressed():
+	allSongLabels[selected_song].get_parent().get_child(2).hide()
 	selected_song = 4
 	fill_details()
 
 func _on_song_6_button_pressed():
+	allSongLabels[selected_song].get_parent().get_child(2).hide()
 	selected_song = 5
 	fill_details()
 
@@ -86,7 +93,9 @@ func _on_button_pressed():
 	sound_enabled = !sound_enabled
 	if sound_enabled:
 		sound_button.set_texture(konstantin_on)
+		ComboManager.konstantinToggle = true
 		print("Sound Effects enabled!")
 	else:
 		sound_button.set_texture(konstantin_off)
+		ComboManager.konstantinToggle = false
 		print("Sound Effects disabled!")
