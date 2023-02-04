@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlsaokoa2csuy"]
+
+[ext_resource type="Script" path="res://scripts/BeatManager.gd" id="1_v8qug"]
+[ext_resource type="PackedScene" uid="uid://dq0mlm1mc0rys" path="res://scenes/level_content.tscn" id="2_waj5d"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BeatManager" type="Node2D" parent="."]
+script = ExtResource("1_v8qug")
+songResourceName = "res://music/song_4_128_bpm.mp3"
+songBPM = 128.0
+
+[node name="LevelContent" parent="." instance=ExtResource("2_waj5d")]

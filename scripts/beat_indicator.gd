@@ -10,10 +10,10 @@ extends Node2D
 
 func _ready() -> void:
 	var duration = 60.0 / bpm
-	
+
 	var tween = create_tween().set_loops().set_parallel().set_ease(Tween.EASE_IN)
 	tween.loop_finished.connect(_on_finished)
-	
+
 	tween.tween_property(left_indicator, "position", Vector2(0, 0), duration)
 	tween.tween_property(right_indicator, "position", Vector2(0, 0), duration)
 	tween.tween_property(center_indicator, "scale", Vector2(rigt_target_scale, rigt_target_scale), duration)

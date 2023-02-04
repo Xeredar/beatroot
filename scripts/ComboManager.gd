@@ -8,6 +8,7 @@ var totalPoints = 0
 var maximumBeats = 0
 var perfectBeats = 0
 var greatBeats = 0
+var konstantinToggle = false
 
 func reset():
 	currentComboCount = 0

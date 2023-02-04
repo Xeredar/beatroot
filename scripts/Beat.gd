@@ -5,7 +5,7 @@ var beatType : int
 
 var isActive = true
 
-@onready var playerController : CharacterBody2D = $"../../Character"
+@onready var playerController : CharacterBody2D = $"../../LevelContent/Character"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -5,6 +5,7 @@ signal beat_grace_end
 
 @export var songResourceName = "res://music/song_1_122_bpm.mp3"
 @export var songBPM = 122.0
+@export var beatStartOffset = 0.0
 @export var graceTime = 0.2
 @export var graceRange = 20.0
 
@@ -26,16 +27,18 @@ const warmupTime = 3.0
 const perfect_distance = 0.1
 const great_distance = 0.5
 var timeLeft = 0.0
-@onready var sfx = $"../SFX"
+@onready var sfx = $"../LevelContent/SFX"
+@onready var background = $"../LevelContent/Background"
 
 const BeatScript = preload("res://scripts/Beat.gd")
 const BeatKeyScript = preload("res://scripts/BeatKey.gd")
-@onready var camera = $"../Camera"
-@onready var tractor = $"../Tractor"
-@onready var playerController : CharacterBody2D = $"../Character"
+@onready var camera = $"../LevelContent/Camera"
+@onready var tractor = $"../LevelContent/Tractor"
+@onready var playerController : CharacterBody2D = $"../LevelContent/Character"
 var beats = []
 var beatKeys = []
 var obstacles = []
+var obstacleKeys = []
 var timer = 0.0
 var wantsBigObstacle = false
 var skipNextBeat = false
@@ -72,7 +75,7 @@ func _spawnSmallObstacle(beatPosition):
 	skipNextBeat = true
 	var beatKeySprite = BeatKeyScript.new()
 	add_child(beatKeySprite)
-	beatKeys.push_back(beatKeySprite)
+	obstacleKeys.push_back(beatKeySprite)
 	beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
 	beatKeySprite.setKeyName("␣")
 	beatKeySprite.speed = speed
@@ -85,7 +88,7 @@ func _spawnBigObstacle(beatPosition):
 	skipNextBeat = true
 	var beatKeySprite = BeatKeyScript.new()
 	add_child(beatKeySprite)
-	beatKeys.push_back(beatKeySprite)
+	obstacleKeys.push_back(beatKeySprite)
 	beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
 	beatKeySprite.setKeyName("␣")
 	beatKeySprite.speed = speed
@@ -108,7 +111,7 @@ func _ready():
 	var warmupBeatCount = floor(warmupTime * bps)
 	var beatLength = song.get_length() - warmupBeatCount / bps
 	var beatCount = (int)(floor(beatLength * bps) + 1)
-	var beatOffset = warmupBeatCount / bps * speed + playerController.position.x
+	var beatOffset = warmupBeatCount / bps * speed + playerController.position.x + beatStartOffset * speed
 	for beat in range(0, beatCount):
 		var beatPosition = beatOffset + beat / bps * speed
 		if skipNextBeat:
@@ -124,7 +127,7 @@ func _ready():
 					wantsBigObstacle = true
 					var beatKeySprite = BeatKeyScript.new()
 					add_child(beatKeySprite)
-					beatKeys.push_back(beatKeySprite)
+					obstacleKeys.push_back(beatKeySprite)
 					beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
 					beatKeySprite.setKeyName("␣")
 					beatKeySprite.speed = speed
@@ -139,17 +142,19 @@ func fade_black_animation_finished(anim_name):
 	if (anim_name == "fade_in_black"):
 		FadeBlack.animation_finished.disconnect(fade_black_animation_finished)
 		FadeBlack.fade_out_black()
-		get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
+		if HighScore.is_new_highscore(ComboManager.totalPoints):
+			get_tree().change_scene_to_file("res://scenes/new_highscore.tscn")
+		else:
+			get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if timeLeft > 0.0:
 		timeLeft -= delta
-
 	if timeLeft < 0.0:
 		timeLeft = 0
+		end_round()
 #		get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
-		FadeBlack.fade_in_black()
 
 	timer += delta
 	if timer > 1.0/bps - graceTime * 0.5:
@@ -203,14 +208,31 @@ func _process(delta):
 		miss_indicator_child.position = Vector2(240, 60)
 		add_child(miss_indicator_child)
 
-	for obstacle in obstacles:
+	var offsetForBigObstacles = 0
+	for n in obstacles.size():
+		var obstacle = obstacles[n]
+		var obstacleKey = obstacleKeys[n + offsetForBigObstacles]
+		var obstacleKeyDistance = obstacleKey.position.x - playerController.position.x
 		obstacle.position.x -= speed * delta
 		if obstacle.active && abs(obstacle.position.x - playerController.position.x) < 3.0 && playerController.position.y > obstacle.height:
 			ComboManager.collide()
 			obstacle.active = false
 			camera.shake(4)
+		if obstacleKeyDistance < -graceRange:
+			obstacleKey.hide()
 
+func end_round():
+	playerController.end_animation()
+	playerController.connect("victory_animation_done", _on_animation_finished)
+	tractor.stop()
+	background.stop()	
+
+func _on_animation_finished():
+	FadeBlack.fade_in_black()
+	
 func play_sound(sound):
+	if ComboManager.konstantinToggle == true:
+		return
 	match (sound):
 		"suck":
 			sfx.stream = suckSounds[randi() % suckSounds.size()]

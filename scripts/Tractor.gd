@@ -16,3 +16,7 @@ func set_speed(speed):
 
 func pick_beet():
 	_vacuum.play("suck")
+
+func stop():
+	_vacuum.stop()
+	_tractor.stop()

@@ -2,6 +2,7 @@ extends CanvasLayer
 @onready var continue_label : Label = $ContinueContainer/Label
 @onready var accuracy_label : Label = $ResultsContainer/Label
 @onready var points_label : Label = $ResultsContainer2/Label
+@onready var first_time = true
 
 func _ready():
 	accuracy_label.set_text("")
@@ -13,13 +14,17 @@ func _ready():
 	set_acuracy(ComboManager.totalHitBeats, accuracy, ComboManager.perfectBeats, p_accuracy, ComboManager.greatBeats, g_accuracy)
 	$AnimationPlayer.play("blink")
 
-func _process(_delta):
+func _physics_process(delta: float) -> void:
+	if first_time:
+		first_time = false
+		return
 	if Input.is_action_just_pressed("jump"):
-		print("Replay triggered!")
-		get_tree().change_scene_to_file("res://scenes/test_konstantin.tscn")
-	if Input.is_action_just_pressed("turnip"):
-		print("Next Level triggered!")
-		get_tree().change_scene_to_file("res://scenes/test_konstantin.tscn")
+		get_tree().change_scene_to_file("res://scenes/level_select.tscn")
+	elif Input.is_action_just_pressed("turnip"):
+		# TODO: Replace with actual reload functionality
+		get_tree().change_scene_to_file("res://scenes/song_1.tscn")
+	elif Input.is_action_just_pressed("carrot"):
+		get_tree().change_scene_to_file("res://scenes/highscore_display.tscn")
 
 func set_points(text):
 	points_label.set_text("Points:\n{points}".format({"points": text}))
