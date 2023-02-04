@@ -1,8 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvw8eu6r80yb7"]
+[gd_scene load_steps=6 format=3 uid="uid://dvw8eu6r80yb7"]
 
-[ext_resource type="LabelSettings" path="res://sprites/pixelfont_label.tres" id="1_4af0q"]
+[ext_resource type="LabelSettings" uid="uid://b3w8fu1mk1mvm" path="res://sprites/pixelfont_label.tres" id="1_4af0q"]
 [ext_resource type="Script" path="res://scripts/results_screen.gd" id="1_n7vp0"]
 [ext_resource type="Texture2D" uid="uid://bafcofmnhcobt" path="res://sprites/results.png" id="2_3ywoy"]
+
+[sub_resource type="Animation" id="Animation_2h6st"]
+resource_name = "blink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContinueContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e4lsr"]
+_data = {
+"blink": SubResource("Animation_2h6st")
+}
 
 [node name="ResultsScreen" type="CanvasLayer"]
 script = ExtResource("1_n7vp0")
@@ -89,3 +109,8 @@ text = "Points:
 Like, a lot dude!"
 label_settings = ExtResource("1_4af0q")
 autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e4lsr")
+}

@@ -11,7 +11,6 @@ func _ready():
 	set_perfect_accuracy(str(round(ComboManager.perfectBeats / ComboManager.totalHitBeats as float) * 100) + "%")
 	set_great_accuracy(str(round(ComboManager.greatBeats / ComboManager.totalHitBeats as float) * 100) + "%")
 	$AnimationPlayer.play("blink")
-	$AnimationPlayer.play("firefly")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("jump"):
