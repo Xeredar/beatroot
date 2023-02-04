@@ -208,17 +208,18 @@ func _process(delta):
 	for n in obstacles.size():
 		var obstacle = obstacles[n]
 		var obstacleKey = obstacleKeys[n + offsetForBigObstacles]
+		var obstacleKeyDistance = obstacleKey.position.x - playerController.position.x
 		obstacle.position.x -= speed * delta
 		if obstacle.active && abs(obstacle.position.x - playerController.position.x) < 3.0 && playerController.position.y > obstacle.height:
 			ComboManager.collide()
 			obstacle.active = false
 			camera.shake(4)
-		if obstacle.position.x <= playerController.position.x - graceRange:
-			obstacle.active = false
+		if obstacleKeyDistance < -graceRange:
+#		if obstacle.position.x <= playerController.position.x - graceRange:
 			obstacleKey.hide()
-			if str(obstacle).contains("ObstacleBig"):
-				offsetForBigObstacles += 1
-				obstacleKeys[n + offsetForBigObstacles].hide()
+#			if str(obstacle).contains("ObstacleBig"):
+#				offsetForBigObstacles += 1
+#				obstacleKeys[n + offsetForBigObstacles].hide()
 
 
 
