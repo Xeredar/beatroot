@@ -7,9 +7,13 @@ var beatTextures = [load("res://sprites/beet_1.png"), load("res://sprites/carrot
 var obstacleObjects = [preload("res://scenes/obstacle_small.tscn"), preload("res://scenes/obstacle_big.tscn")]
 var suckSound1 = preload("res://sounds/Suck.ogg")
 var suckSound2 = preload("res://sounds/Suck2.ogg")
-var hitSound1 = preload("res://sounds/Hit1.ogg")
-var jumpSound1 = preload("res://sounds/Jump1.ogg")
 var suckSounds = [suckSound1, suckSound2]
+var hitSound1 = preload("res://sounds/Hit1.ogg")
+var hitSound2 = preload("res://sounds/Hit2.ogg")
+var hitSounds = [hitSound1, hitSound2]
+var jumpSound1 = preload("res://sounds/Jump1.ogg")
+var jumpSound2 = preload("res://sounds/Jump2.ogg")
+var jumpSounds = [jumpSound1, jumpSound2]
 var beatInputName = ["beet", "carrot", "turnip"]
 var speed = 150.0
 var bps = 122.0 / 60.0
@@ -89,7 +93,7 @@ func _ready():
 			_spawnBigObstacle(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
 			wantsBigObstacle = false
 			continue
-		if randi() % (int)(beatLength) <= 10000:#beat:
+		if randi() % (int)(beatLength) <= beat:
 			if randi() % 20 == 0:
 				if randi() % 3 == 0:
 					wantsBigObstacle = true
@@ -158,9 +162,9 @@ func play_sound(sound):
 			sfx.stream = suckSounds[randi() % suckSounds.size()]
 			sfx.set_volume_db(-8)
 		"hit":
-			sfx.stream = hitSound1
+			sfx.stream = hitSounds[randi() % hitSounds.size()]
 			sfx.set_volume_db(-8)
 		"jump":
-			sfx.stream = jumpSound1
+			sfx.stream = jumpSounds[randi() % jumpSounds.size()]
 			sfx.set_volume_db(-8)
 	sfx.play()

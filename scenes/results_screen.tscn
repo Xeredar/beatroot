@@ -1,36 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvw8eu6r80yb7"]
+[gd_scene load_steps=4 format=3 uid="uid://dvw8eu6r80yb7"]
 
 [ext_resource type="LabelSettings" uid="uid://b3w8fu1mk1mvm" path="res://sprites/pixelfont_label.tres" id="1_4af0q"]
 [ext_resource type="Script" path="res://scripts/results_screen.gd" id="1_n7vp0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aiutj"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-
-[sub_resource type="Animation" id="Animation_37lk0"]
-resource_name = "blink"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ContinueContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 180), Vector2(0, 170), Vector2(0, 180)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_45etq"]
-_data = {
-"blink": SubResource("Animation_37lk0")
-}
+[ext_resource type="Texture2D" uid="uid://bafcofmnhcobt" path="res://sprites/results.png" id="2_3ywoy"]
 
 [node name="ResultsScreen" type="CanvasLayer"]
 script = ExtResource("1_n7vp0")
@@ -42,13 +14,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="ColorRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Panel" type="Panel" parent="MarginContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_aiutj")
+texture = ExtResource("2_3ywoy")
 
 [node name="ResultsTitleContainer" type="MarginContainer" parent="."]
 anchors_preset = 10
@@ -65,8 +33,8 @@ label_settings = ExtResource("1_4af0q")
 [node name="ContinueContainer" type="MarginContainer" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 173.51
-offset_bottom = 223.51
+offset_top = 180.0
+offset_bottom = 230.0
 grow_horizontal = 2
 
 [node name="Label" type="Label" parent="ContinueContainer"]
@@ -121,8 +89,3 @@ text = "Points:
 Like, a lot dude!"
 label_settings = ExtResource("1_4af0q")
 autowrap_mode = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_45etq")
-}

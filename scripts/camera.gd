@@ -52,7 +52,7 @@ func _ready():
 
 func _process(delta):
 	if isShake:
-		_shake_screen(delta)    
+		_shake_screen(delta)
 
 func shake(power = 4):
 	elapsedtime = 0
