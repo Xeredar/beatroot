@@ -7,7 +7,6 @@ signal beat_grace_end
 @export var songBPM = 122.0
 @export var graceTime = 0.2
 @export var graceRange = 20.0
-@export var levelSeed = 20
 
 var beatTextures = [load("res://sprites/beet_1.png"), load("res://sprites/carrot.png"), load("res://sprites/turnip.png")]
 var obstacleObjects = [preload("res://scenes/obstacle_small.tscn"), preload("res://scenes/obstacle_big.tscn")]
@@ -85,7 +84,7 @@ func _ready():
 	ComboManager.reset()
 	bps = songBPM / 60.0
 
-	seed(levelSeed)
+	seed(songResourceName.hash())
 
 	var song = load(songResourceName)
 	var musicPlayer = AudioStreamPlayer.new()
