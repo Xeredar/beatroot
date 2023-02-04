@@ -15,6 +15,7 @@ var timeLeft = 0.0
 
 const BeatScript = preload("res://scripts/Beat.gd")
 const BeatKeyScript = preload("res://scripts/BeatKey.gd")
+@onready var camera = $"../Camera"
 @onready var playerController : CharacterBody2D = $"../Character"
 var beats = []
 var beatKeys = []
@@ -111,6 +112,7 @@ func _process(delta):
 				beat.isActive = false
 				beat.position.y += 5.0
 				beatKey.hide()
+				camera.shake(1)
 
 	if (pressedButtonCount == 1 && !didHitBeat) || pressedButtonCount > 1:
 		ComboManager.missTheBeat()
@@ -123,3 +125,4 @@ func _process(delta):
 		if obstacle.active && abs(obstacle.position.x - playerController.position.x) < 3.0 && playerController.position.y > obstacle.height:
 			ComboManager.collide()
 			obstacle.active = false
+			camera.shake(4)

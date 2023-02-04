@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcff5l07jxmj3"]
+[gd_scene load_steps=14 format=3 uid="uid://dcff5l07jxmj3"]
 
 [ext_resource type="Script" path="res://scripts/BeatManager.gd" id="1_7buj0"]
 [ext_resource type="PackedScene" uid="uid://bsos3ann0bf4" path="res://scenes/character.tscn" id="1_thqwu"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b3bfaxl7mrt2n" path="res://sprites/tractor.png" id="9_hlnab"]
 [ext_resource type="Script" path="res://scripts/MultiplierLabel.gd" id="10_5q3v6"]
 [ext_resource type="Script" path="res://scripts/PointsLabel.gd" id="11_qytww"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="12_453ec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r27ya"]
 size = Vector2(480, 64)
@@ -88,3 +89,7 @@ offset_right = 240.0
 offset_bottom = 36.0
 text = "Points"
 script = ExtResource("11_qytww")
+
+[node name="Camera" type="Camera2D" parent="."]
+offset = Vector2(240, 135)
+script = ExtResource("12_453ec")
