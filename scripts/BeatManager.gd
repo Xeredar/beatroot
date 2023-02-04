@@ -60,7 +60,7 @@ func _spawnBeat(beatPosition):
 		var keyName = InputMap.action_get_events(beatInputName[beatTypeIndex])[0].as_text().split()[0]
 		add_child(beatKeySprite)
 		beatKeys.push_back(beatKeySprite)
-		beatKeySprite.position = Vector2(beatPosition-10, 220.0)
+		beatKeySprite.position = Vector2(beatPosition - 8, 220.0)
 		beatKeySprite.setKeyName(keyName)
 		beatKeySprite.speed = speed
 
@@ -70,6 +70,12 @@ func _spawnSmallObstacle(beatPosition):
 	add_child(obstacleObject)
 	obstacles.push_back(obstacleObject)
 	skipNextBeat = true
+	var beatKeySprite = BeatKeyScript.new()
+	add_child(beatKeySprite)
+	beatKeys.push_back(beatKeySprite)
+	beatKeySprite.position = Vector2(beatPosition + 0.5 / bps * speed - 8, 220.0)
+	beatKeySprite.setKeyName("␣")
+	beatKeySprite.speed = speed
 
 func _spawnBigObstacle(beatPosition):
 	var obstacleObject = obstacleObjects[1].instantiate()
@@ -77,12 +83,20 @@ func _spawnBigObstacle(beatPosition):
 	add_child(obstacleObject)
 	obstacles.push_back(obstacleObject)
 	skipNextBeat = true
+	var beatKeySprite = BeatKeyScript.new()
+	add_child(beatKeySprite)
+	beatKeys.push_back(beatKeySprite)
+	beatKeySprite.position = Vector2(beatPosition + 0.5 / bps * speed - 8, 220.0)
+	beatKeySprite.setKeyName("␣␣")
+	beatKeySprite.speed = speed
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ComboManager.reset()
 	bps = songBPM / 60.0
+
+	seed(songResourceName.hash())
 
 	var song = load(songResourceName)
 	var musicPlayer = AudioStreamPlayer.new()
@@ -103,7 +117,7 @@ func _ready():
 			_spawnBigObstacle(beatPosition)
 			wantsBigObstacle = false
 			continue
-		if randi() % (int)(beatLength) <= 1000:#beat:
+		if randi() % (int)(beatLength) <= beat:
 			if randi() % 20 == 0:
 				if randi() % 3 == 0:
 					wantsBigObstacle = true
