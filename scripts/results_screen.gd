@@ -7,7 +7,7 @@ func _ready():
 	accuracy_label.set_text("")
 	points_label.set_text("")
 	set_points(ComboManager.totalPoints)
-	var accuracy = str((ComboManager.totalHitBeats / max((float)(ComboManager.maximumBeats), 1.0)) * 100) + "%"
+	var accuracy = str(round(ComboManager.totalHitBeats / max((float)(ComboManager.maximumBeats), 1.0) * 100)) + "%"
 	var p_accuracy = str(round(ComboManager.perfectBeats / max((float)(ComboManager.totalHitBeats), 1.0) * 100)) + "%"
 	var g_accuracy = str(round(ComboManager.greatBeats / max((float)(ComboManager.totalHitBeats), 1.0) * 100)) + "%"
 	set_acuracy(ComboManager.totalHitBeats, accuracy, ComboManager.perfectBeats, p_accuracy, ComboManager.greatBeats, g_accuracy)
