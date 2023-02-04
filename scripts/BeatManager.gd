@@ -20,6 +20,8 @@ var bps = 122.0 / 60.0
 const warmupTime = 3.0
 const graceTime = 0.2
 const graceRange = 20.0
+const perfect_distance = 2.0
+const great_distance = 10.0
 var timeLeft = 0.0
 @onready var sfx = $"../SFX"
 
@@ -34,6 +36,7 @@ var timer = 0.0
 var wantsBigObstacle = false
 var skipNextBeat = false
 var beat_miss_indicator: PackedScene = preload("res://scenes/beat_miss_indicator.tscn")
+var beat_hit_evaluation: PackedScene = preload("res://scenes/hit_evaluation_texts.tscn")
 
 func _spawnBeat(beatPosition):
 		var beatSprite = BeatScript.new()
@@ -129,8 +132,19 @@ func _process(delta):
 		var beat = beats[n]
 		var beatKey = beatKeys[n]
 		if beat.isActive:
-			if playerController.is_on_floor() && beatButtonPressed[beat.beatType] && abs(beat.position.x - playerController.position.x) < graceRange:
+			var distance: float = abs(beat.position.x - playerController.position.x)
+			if playerController.is_on_floor() && beatButtonPressed[beat.beatType] && distance < graceRange:
 				ComboManager.hitTheBeat()
+				var hit_evaluation = beat_hit_evaluation.instantiate()
+				var evaluation_string = "Good"
+				if distance < perfect_distance:
+					evaluation_string = "PERFECT!"
+					ComboManager.hitPerfectBeat()
+				elif distance < great_distance:
+					evaluation_string = "Great!"
+					ComboManager.hitGreatBeat()
+				hit_evaluation.show_evaluation(evaluation_string)
+				add_child(hit_evaluation)
 				didHitBeat = true
 				beat.isActive = false
 				beat.hide()
