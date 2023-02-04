@@ -7,6 +7,14 @@ var totalHitBeats = 0
 var totalPoints = 0
 var maximumBeats = 0
 
+func reset():
+	currentComboCount = 0
+	currentMultiplier = 1
+	totalMissedBeats = 0
+	totalHitBeats = 0
+	totalPoints = 0
+	maximumBeats = 0
+
 func hitTheBeat():
 	currentComboCount += 1
 	totalHitBeats += 1

@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bg38rp15rk1ii"]
+[gd_scene load_steps=3 format=3 uid="uid://bg38rp15rk1ii"]
 
 [ext_resource type="Texture2D" uid="uid://b2uff1tske2q2" path="res://sprites/mole1.png" id="1_02wqn"]
+[ext_resource type="Script" path="res://scripts/Obstacle.gd" id="2_1suuu"]
 
 [node name="ObstacleSmall" type="Sprite2D"]
 z_index = 2
 texture = ExtResource("1_02wqn")
+script = ExtResource("2_1suuu")

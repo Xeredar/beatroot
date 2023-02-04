@@ -11,6 +11,7 @@ var bps = 122.0 / 60.0
 const warmupTime = 3.0
 const graceTime = 0.2
 const graceRange = 20.0
+var timeLeft = 0.0
 
 const BeatScript = preload("res://scripts/Beat.gd")
 const BeatKeyScript = preload("res://scripts/BeatKey.gd")
@@ -41,6 +42,8 @@ func spawn(beatPosition):
 		beatSprite.speed = speed
 		beatSprite.beatType = beatTypeIndex
 
+		ComboManager.maximumBeats += 1
+
 		var beatKeySprite = BeatKeyScript.new()
 		var keyName = InputMap.action_get_events(beatInputName[beatTypeIndex])[0].as_text().split()[0]
 		add_child(beatKeySprite)
@@ -52,11 +55,14 @@ func spawn(beatPosition):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ComboManager.reset()
+
 	var song = load("res://music/song_1_122_bpm.mp3")
-	var player = AudioStreamPlayer.new()
-	add_child(player)
-	player.set_stream(song)
-	player.play()
+	var musicPlayer = AudioStreamPlayer.new()
+	add_child(musicPlayer)
+	musicPlayer.set_stream(song)
+	musicPlayer.play()
+	timeLeft = song.get_length()
 
 	var warmupBeatCount = floor(warmupTime * bps)
 	var beatLength = song.get_length() - warmupBeatCount / bps
@@ -70,6 +76,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	timeLeft -= delta
+	if timeLeft < 0.0:
+		get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
+
 	timer += delta
 	if timer > 1.0/bps - graceTime * 0.5:
 		beat_grace_start.emit()
@@ -110,5 +120,6 @@ func _process(delta):
 
 	for obstacle in obstacles:
 		obstacle.position.x -= speed * delta
-		if abs(obstacle.position.x - playerController.position.x) < 3.0 && playerController.position.y > 160:
+		if obstacle.active && abs(obstacle.position.x - playerController.position.x) < 3.0 && playerController.position.y > obstacle.height:
 			ComboManager.collide()
+			obstacle.active = false
