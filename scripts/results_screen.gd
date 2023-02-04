@@ -3,11 +3,12 @@ extends CanvasLayer
 @onready var accuracy_label : Label = $ResultsContainer/Label
 @onready var points_label : Label = $ResultsContainer2/Label
 
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	accuracy_label.set_text("")
 	points_label.set_text("")
-	set_points(ComboManager.totalPoints)
-	set_acuracy(str((ComboManager.totalHitBeats / ComboManager.maximumBeats) * 100) + "%")
+	set_points("420")
+	set_acuracy("54%")
 	$AnimationPlayer.play("blink")
 	
 func _process(_delta):

@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn8nvea7kus44"]
+[gd_scene load_steps=6 format=3 uid="uid://dvw8eu6r80yb7"]
 
 [ext_resource type="LabelSettings" uid="uid://b3w8fu1mk1mvm" path="res://sprites/pixelfont_label.tres" id="1_4af0q"]
-[ext_resource type="Script" path="res://scenes/results_screen.gd" id="1_f5ery"]
+[ext_resource type="Script" path="res://scripts/results_screen.gd" id="1_n7vp0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aiutj"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -33,7 +33,7 @@ _data = {
 }
 
 [node name="ResultsScreen" type="CanvasLayer"]
-script = ExtResource("1_f5ery")
+script = ExtResource("1_n7vp0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -65,8 +65,8 @@ label_settings = ExtResource("1_4af0q")
 [node name="ContinueContainer" type="MarginContainer" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 177.9
-offset_bottom = 227.9
+offset_top = 173.51
+offset_bottom = 223.51
 grow_horizontal = 2
 
 [node name="Label" type="Label" parent="ContinueContainer"]
