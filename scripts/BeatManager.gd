@@ -88,12 +88,14 @@ func _ready():
 
 	var warmupBeatCount = floor(warmupTime * bps)
 	var beatLength = song.get_length() - warmupBeatCount / bps
+	var beatOffset = warmupBeatCount / bps * speed + playerController.position.x
 	for beat in range(0, beatLength * bps + 1):
+		var beatPosition = beatOffset + beat / bps * speed
 		if skipNextBeat:
 			skipNextBeat = false
 			continue
 		if wantsBigObstacle:
-			_spawnBigObstacle(warmupBeatCount / bps * speed + beat / bps * speed + playerController.position.x)
+			_spawnBigObstacle(beatPosition)
 			wantsBigObstacle = false
 			continue
 		if randi() % (int)(beatLength) <= 1000:#beat:
@@ -101,9 +103,9 @@ func _ready():
 				if randi() % 3 == 0:
 					wantsBigObstacle = true
 				else:
-					_spawnSmallObstacle(warmupBeatCount / bps * speed + beat / bps * speed + playerController.position.x)
+					_spawnSmallObstacle(beatPosition)
 			else:
-				_spawnBeat(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
+				_spawnBeat(beatPosition)
 
 	FadeBlack.animation_finished.connect(fade_black_animation_finished)
 
