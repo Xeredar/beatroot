@@ -89,7 +89,7 @@ func _ready():
 			_spawnBigObstacle(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
 			wantsBigObstacle = false
 			continue
-		if randi() % (int)(beatLength) <= 10000:#beat:
+		if randi() % (int)(beatLength) <= beat:
 			if randi() % 20 == 0:
 				if randi() % 3 == 0:
 					wantsBigObstacle = true
