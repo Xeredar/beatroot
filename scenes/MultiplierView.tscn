@@ -1,0 +1,229 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmilhk0xd02lv"]
+
+[ext_resource type="Script" path="res://scripts/MultiplierLabel.gd" id="1_4i52c"]
+[ext_resource type="Texture2D" uid="uid://bokbxbxq6iy3v" path="res://sprites/multiplier_bg_shine.png" id="2_5ctis"]
+[ext_resource type="Texture2D" uid="uid://c7ipktwtc6rms" path="res://sprites/multiplier_bg_ring.png" id="2_hmbn8"]
+[ext_resource type="Texture2D" uid="uid://vsoqgobht260" path="res://sprites/multiplier_bg.png" id="3_jsmno"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_keb1x"]
+font_size = 26
+outline_size = 7
+outline_color = Color(0.219608, 0.0313726, 0.219608, 1)
+
+[sub_resource type="Animation" id="Animation_58gcy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MultiplierBg:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MultiplierBgRingShine1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MultiplierBgRingShine1:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MultiplierBgRing:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6qfb7"]
+resource_name = "decrease"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MultiplierBg:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.108058, 0.30281, 0.539063),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.85, 0.85), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0833609, 0.2, 0.409463, 0.670234),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.85, 0.85), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MultiplierBgRingShine1:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.00122589, 0.351832),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.6, 1.6), Vector2(0.75, 0.75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MultiplierBgRingShine1:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.348154),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MultiplierBgRing:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.149559, 0.262342, 0.427837),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2b6qh"]
+resource_name = "increase"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MultiplierBg:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.108058, 0.30281, 0.539063),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0833609, 0.2, 0.409463, 0.670234),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.15, 1.15), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MultiplierBgRingShine1:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MultiplierBgRingShine1:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_db5bi"]
+_data = {
+"RESET": SubResource("Animation_58gcy"),
+"decrease": SubResource("Animation_6qfb7"),
+"increase": SubResource("Animation_2b6qh")
+}
+
+[node name="Multiplier" type="Node2D"]
+position = Vector2(436, 43)
+script = ExtResource("1_4i52c")
+
+[node name="MultiplierBgShine" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.333333, 0.694118)
+position = Vector2(2, -2)
+texture = ExtResource("2_5ctis")
+
+[node name="MultiplierBgShine2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.333333, 0.694118)
+position = Vector2(2, -2)
+texture = ExtResource("2_5ctis")
+
+[node name="MultiplierBgRingShine1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_hmbn8")
+offset = Vector2(1, -1)
+
+[node name="MultiplierBgRing" type="Sprite2D" parent="."]
+texture = ExtResource("2_hmbn8")
+offset = Vector2(1, -1)
+
+[node name="MultiplierBg" type="Sprite2D" parent="."]
+modulate = Color(0.713726, 0, 0.384314, 1)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("3_jsmno")
+offset = Vector2(5, -5)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -33.0
+offset_top = -33.0
+offset_right = 33.0
+offset_bottom = 28.0
+scale = Vector2(1.0214, 1.0214)
+pivot_offset = Vector2(34, 33)
+text = "1x"
+label_settings = SubResource("LabelSettings_keb1x")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_db5bi")
+}
