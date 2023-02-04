@@ -39,7 +39,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("jump"):
 		get_tree().change_scene_to_file("res://scenes/" + allSongScenes[selected_song] + ".tscn")
 	if Input.is_action_just_pressed("down"):
-		if selected_song < allSongTitles.size():
+		if selected_song < allSongTitles.size() - 1:
 			allSongLabels[selected_song].get_parent().get_child(2).hide()
 			selected_song = selected_song + 1
 			fill_details()
