@@ -214,12 +214,11 @@ func _process(delta):
 			obstacle.active = false
 			camera.shake(4)
 		if obstacle.position.x <= playerController.position.x - graceRange:
-				obstacle.active = false
-				obstacle.hide()
-				obstacleKey.hide()
-				if str(obstacle).contains("ObstacleBig"):
-					offsetForBigObstacles += 1
-					obstacleKeys[n + offsetForBigObstacles].hide()
+			obstacle.active = false
+			obstacleKey.hide()
+			if str(obstacle).contains("ObstacleBig"):
+				offsetForBigObstacles += 1
+				obstacleKeys[n + offsetForBigObstacles].hide()
 
 
 
