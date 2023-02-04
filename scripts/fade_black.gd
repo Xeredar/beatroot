@@ -1,5 +1,5 @@
 extends CanvasLayer
-signal animation_finished
+signal animation_finished(anim_name)
 
 enum FadeType {
 	none,
@@ -40,7 +40,7 @@ func fade_out_black():
 	
 	
 func _animation_finished(anim_name):
-	animation_finished.emit()
+	animation_finished.emit(anim_name)
 	print("animation_finished")
 	if(waitingAnimationType == FadeType.fade_in):
 		animationPlayer.play("fade_in_black")

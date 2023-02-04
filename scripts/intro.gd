@@ -26,9 +26,10 @@ func _ready():
 	start()
 	FadeBlack.animation_finished.connect(fade_black_animation_finished)
 	
-func fade_black_animation_finished():
-	FadeBlack.fade_out_black()
-	get_tree().change_scene_to_file("res://scenes/test_konstantin.tscn")
+func fade_black_animation_finished(anim_name):
+	if (anim_name == "fade_in_black"):
+		FadeBlack.fade_out_black()
+		get_tree().change_scene_to_file("res://scenes/test_konstantin.tscn")
 	
 func start():
 	_play_scene()

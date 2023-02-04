@@ -101,13 +101,20 @@ func _ready():
 					_spawnSmallObstacle(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
 			else:
 				_spawnBeat(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
+	
+	FadeBlack.animation_finished.connect(fade_black_animation_finished)
+
+func fade_black_animation_finished(anim_name):
+	if (anim_name == "fade_in_black"):
+		FadeBlack.fade_out_black()
+		get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	timeLeft -= delta
 	if timeLeft < 0.0:
-		get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
+		FadeBlack.fade_in_black()
 
 	timer += delta
 	if timer > 1.0/bps - graceTime * 0.5:
