@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcff5l07jxmj3"]
+[gd_scene load_steps=13 format=3 uid="uid://dcff5l07jxmj3"]
 
 [ext_resource type="Script" path="res://scripts/BeatManager.gd" id="1_7buj0"]
 [ext_resource type="PackedScene" uid="uid://bsos3ann0bf4" path="res://scenes/character.tscn" id="1_thqwu"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dmegxsdbna7qm" path="res://sprites/bg_1.png" id="4_tmjkv"]
 [ext_resource type="Texture2D" uid="uid://dbyywh6oaan2x" path="res://sprites/fg_0.png" id="5_0db3q"]
 [ext_resource type="Texture2D" uid="uid://doc8phuvpvuj" path="res://sprites/bg_0.png" id="5_2c62w"]
+[ext_resource type="Texture2D" uid="uid://b3bfaxl7mrt2n" path="res://sprites/tractor.png" id="9_hlnab"]
+[ext_resource type="Script" path="res://scripts/MultiplierLabel.gd" id="10_5q3v6"]
+[ext_resource type="Script" path="res://scripts/PointsLabel.gd" id="11_qytww"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r27ya"]
 size = Vector2(480, 64)
@@ -23,7 +26,7 @@ position = Vector2(2.08165e-12, 52)
 shape = SubResource("RectangleShape2D_r27ya")
 
 [node name="Character" parent="." instance=ExtResource("1_thqwu")]
-position = Vector2(144, 96)
+position = Vector2(195, 160)
 
 [node name="BeatManager" type="Node2D" parent="."]
 script = ExtResource("1_7buj0")
@@ -64,3 +67,24 @@ centered = false
 z_index = 3
 position = Vector2(240, 236)
 scale = Vector2(0.019, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("9_hlnab")
+centered = false
+
+[node name="Multiplier" type="Label" parent="."]
+offset_left = 285.0
+offset_top = 10.0
+offset_right = 468.0
+offset_bottom = 36.0
+text = "Multiplier"
+horizontal_alignment = 2
+script = ExtResource("10_5q3v6")
+
+[node name="Points" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 180.0
+offset_bottom = 36.0
+text = "Points: "
+script = ExtResource("11_qytww")
