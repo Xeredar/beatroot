@@ -79,31 +79,31 @@ func _spawnBigObstacle(beatPosition):
 func _ready():
 	ComboManager.reset()
 
-	var song = load("res://music/song_1_122_bpm.mp3")
+	var song = load("res://music/song_1_122_bpm_short.mp3")
 	var musicPlayer = AudioStreamPlayer.new()
 	add_child(musicPlayer)
 	musicPlayer.set_stream(song)
 	musicPlayer.play()
-	timeLeft = song.get_length()
+	timeLeft = song.get_length() + 3.0
 
 	var warmupBeatCount = floor(warmupTime * bps)
 	var beatLength = song.get_length() - warmupBeatCount / bps
-	for beat in range(0, beatLength * bps):
+	for beat in range(0, beatLength * bps + 1):
 		if skipNextBeat:
 			skipNextBeat = false
 			continue
 		if wantsBigObstacle:
-			_spawnBigObstacle(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
+			_spawnBigObstacle(warmupBeatCount / bps * speed + beat / bps * speed + playerController.position.x)
 			wantsBigObstacle = false
 			continue
-		if randi() % (int)(beatLength) <= beat:
+		if randi() % (int)(beatLength) <= 1000:#beat:
 			if randi() % 20 == 0:
 				if randi() % 3 == 0:
 					wantsBigObstacle = true
 				else:
-					_spawnSmallObstacle(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
+					_spawnSmallObstacle(warmupBeatCount / bps * speed + beat / bps * speed + playerController.position.x)
 			else:
-				_spawnBeat(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
+				_spawnBeat(warmupBeatCount / bps * speed + beat / bps * speed + playerController.position.x)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
