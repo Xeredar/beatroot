@@ -27,6 +27,7 @@ const perfect_distance = 0.1
 const great_distance = 0.5
 var timeLeft = 0.0
 @onready var sfx = $"../LevelContent/SFX"
+@onready var background = $"../LevelContent/Background"
 
 const BeatScript = preload("res://scripts/Beat.gd")
 const BeatKeyScript = preload("res://scripts/BeatKey.gd")
@@ -149,11 +150,10 @@ func fade_black_animation_finished(anim_name):
 func _process(delta):
 	if timeLeft > 0.0:
 		timeLeft -= delta
-
 	if timeLeft < 0.0:
 		timeLeft = 0
+		end_round()
 #		get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
-		FadeBlack.fade_in_black()
 
 	timer += delta
 	if timer > 1.0/bps - graceTime * 0.5:
@@ -220,6 +220,15 @@ func _process(delta):
 		if obstacleKeyDistance < -graceRange:
 			obstacleKey.hide()
 
+func end_round():
+	playerController.end_animation()
+	playerController.connect("victory_animation_done", _on_animation_finished)
+	tractor.stop()
+	background.stop()	
+
+func _on_animation_finished():
+	FadeBlack.fade_in_black()
+	
 func play_sound(sound):
 	if ComboManager.konstantinToggle == true:
 		return

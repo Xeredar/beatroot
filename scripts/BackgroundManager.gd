@@ -17,3 +17,6 @@ func _process(delta):
 		if child.position.x <= -960.0:
 			child.position.x += 960.0
 		index += 1
+
+func stop():
+	speed = 0
