@@ -18,7 +18,6 @@ func save_highscores():
 
 func _ready() -> void:
 	_load_highscores()
-	print(highscores)
 
 
 func _sort_highscores() -> void:

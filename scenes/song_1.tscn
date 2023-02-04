@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcff5l07jxmj3"]
+[gd_scene load_steps=3 format=3 uid="uid://bsuuxmsexk3e4"]
 
 [ext_resource type="Script" path="res://scripts/BeatManager.gd" id="1_7buj0"]
-[ext_resource type="PackedScene" uid="uid://dq0mlm1mc0rys" path="res://scenes/level_content.tscn" id="2_hou74"]
+[ext_resource type="PackedScene" path="res://scenes/level_content.tscn" id="2_hou74"]
 
 [node name="Node2D" type="Node2D"]
 

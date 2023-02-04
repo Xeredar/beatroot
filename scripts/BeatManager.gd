@@ -221,8 +221,8 @@ func _process(delta):
 				if str(obstacle).contains("ObstacleBig"):
 					offsetForBigObstacles += 1
 					obstacleKeys[n + offsetForBigObstacles].hide()
-					
-					
+
+
 
 func play_sound(sound):
 	match (sound):
