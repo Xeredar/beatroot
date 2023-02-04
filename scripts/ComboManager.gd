@@ -16,6 +16,8 @@ func reset():
 	totalHitBeats = 0
 	totalPoints = 0
 	maximumBeats = 0
+	perfectBeats = 0
+	greatBeats = 0
 
 func hitTheBeat():
 	currentComboCount += 1
