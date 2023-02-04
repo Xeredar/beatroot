@@ -33,6 +33,7 @@ func _ready():
 	
 func fade_black_animation_finished(anim_name):
 	if (anim_name == "fade_in_black"):
+		FadeBlack.animation_finished.disconnect(fade_black_animation_finished)
 		FadeBlack.fade_out_black()
 		get_tree().change_scene_to_file("res://scenes/test_konstantin.tscn")
 	

@@ -109,13 +109,18 @@ func _ready():
 
 func fade_black_animation_finished(anim_name):
 	if (anim_name == "fade_in_black"):
+		FadeBlack.animation_finished.disconnect(fade_black_animation_finished)
 		FadeBlack.fade_out_black()
 		get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	timeLeft -= delta
+	if timeLeft > 0.0:
+		timeLeft -= delta
+
 	if timeLeft < 0.0:
+		timeLeft = 0
+#		get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
 		FadeBlack.fade_in_black()
 
 	timer += delta
