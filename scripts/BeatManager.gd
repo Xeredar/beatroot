@@ -4,7 +4,7 @@ signal beat_grace_start
 signal beat_grace_end
 
 var beatTextures = [load("res://sprites/beet_1.png"), load("res://sprites/carrot.png"), load("res://sprites/turnip.png")]
-var obstacleObjects = [preload("res://scenes/obstacle_small.tscn")]
+var obstacleObjects = [preload("res://scenes/obstacle_small.tscn"), preload("res://scenes/obstacle_big.tscn")]
 var suckSound1 = preload("res://sounds/Suck.ogg")
 var suckSound2 = preload("res://sounds/Suck2.ogg")
 var hitSound1 = preload("res://sounds/Hit1.ogg")
@@ -27,17 +27,11 @@ var beats = []
 var beatKeys = []
 var obstacles = []
 var timer = 0.0
+var wantsBigObstacle = false
 var skipNextBeat = false
 var beat_miss_indicator: PackedScene = preload("res://scenes/beat_miss_indicator.tscn")
 
-func spawn(beatPosition):
-	if randi() % 20 == 0:
-		var obstacleObject = obstacleObjects[0].instantiate()
-		add_child(obstacleObject)
-		obstacles.push_back(obstacleObject)
-		obstacleObject.position = Vector2(beatPosition + 0.5 / bps * speed, 190.0)
-		skipNextBeat = true
-	else:
+func _spawnBeat(beatPosition):
 		var beatSprite = BeatScript.new()
 		var beatTypeIndex = randi() % beatTextures.size()
 		var beatTexture = beatTextures[beatTypeIndex]
@@ -59,6 +53,20 @@ func spawn(beatPosition):
 		beatKeySprite.setKeyName(keyName)
 		beatKeySprite.speed = speed
 
+func _spawnSmallObstacle(beatPosition):
+	var obstacleObject = obstacleObjects[0].instantiate()
+	obstacleObject.position = Vector2(beatPosition + 0.5 / bps * speed, 190.0)
+	add_child(obstacleObject)
+	obstacles.push_back(obstacleObject)
+	skipNextBeat = true
+
+func _spawnBigObstacle(beatPosition):
+	var obstacleObject = obstacleObjects[1].instantiate()
+	obstacleObject.position = Vector2(beatPosition + 0.5 / bps * speed, 170.0)
+	add_child(obstacleObject)
+	obstacles.push_back(obstacleObject)
+	skipNextBeat = true
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -77,8 +85,18 @@ func _ready():
 		if skipNextBeat:
 			skipNextBeat = false
 			continue
-		if randi() % (int)(beatLength) <= beat:
-			spawn(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
+		if wantsBigObstacle:
+			_spawnBigObstacle(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
+			wantsBigObstacle = false
+			continue
+		if randi() % (int)(beatLength) <= 10000:#beat:
+			if randi() % 20 == 0:
+				if randi() % 3 == 0:
+					wantsBigObstacle = true
+				else:
+					_spawnSmallObstacle(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
+			else:
+				_spawnBeat(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

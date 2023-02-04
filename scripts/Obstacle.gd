@@ -1,6 +1,6 @@
 extends Node2D
 
-var height = 160
+@export var height = 160
 var active = true
 
 # Called when the node enters the scene tree for the first time.

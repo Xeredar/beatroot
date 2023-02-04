@@ -7,7 +7,7 @@ func _ready():
 	accuracy_label.set_text("")
 	points_label.set_text("")
 	set_points(ComboManager.totalPoints)
-	set_acuracy(str((ComboManager.totalHitBeats / max(ComboManager.maximumBeats, 1)) * 100) + "%")
+	set_acuracy(str((ComboManager.totalHitBeats / max((float)(ComboManager.maximumBeats), 1.0)) * 100) + "%")
 	$AnimationPlayer.play("blink")
 
 func _process(_delta):
