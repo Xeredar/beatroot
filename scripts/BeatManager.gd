@@ -26,13 +26,13 @@ const warmupTime = 3.0
 const perfect_distance = 0.1
 const great_distance = 0.5
 var timeLeft = 0.0
-@onready var sfx = $"../SFX"
+@onready var sfx = $"../LevelContent/SFX"
 
 const BeatScript = preload("res://scripts/Beat.gd")
 const BeatKeyScript = preload("res://scripts/BeatKey.gd")
-@onready var camera = $"../Camera"
-@onready var tractor = $"../Tractor"
-@onready var playerController : CharacterBody2D = $"../Character"
+@onready var camera = $"../LevelContent/Camera"
+@onready var tractor = $"../LevelContent/Tractor"
+@onready var playerController : CharacterBody2D = $"../LevelContent/Character"
 var beats = []
 var beatKeys = []
 var obstacles = []

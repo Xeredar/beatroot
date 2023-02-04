@@ -30,13 +30,13 @@ func _ready():
 	_hide_text()
 	start()
 	FadeBlack.animation_finished.connect(fade_black_animation_finished)
-	
+
 func fade_black_animation_finished(anim_name):
 	if (anim_name == "fade_in_black"):
 		FadeBlack.animation_finished.disconnect(fade_black_animation_finished)
 		FadeBlack.fade_out_black()
-		get_tree().change_scene_to_file("res://scenes/test_konstantin.tscn")
-	
+		get_tree().change_scene_to_file("res://scenes/song_3.tscn")
+
 func start():
 	_play_scene()
 
@@ -53,7 +53,7 @@ func _hide_text():
 	speech_label.set_text("")
 	text_box_node.hide()
 	speech_box.hide()
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if text_scrolling:
@@ -67,7 +67,7 @@ func _process(delta):
 			move_questgiver = false
 			current_state = states.DISPLAY_TEXT
 			_play_scene()
-	
+
 	if Input.is_action_just_pressed("jump") and current_state == states.WAIT:
 		current_text = current_text + 1
 		speech_label.set_visible_ratio(0)
@@ -92,7 +92,7 @@ func _render_text():
 		animation_player.play("talk")
 	else:
 		animation_player.play("talk_potato")
-	
+
 func _slide_in_quest_giver():
 	move_questgiver = true
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcff5l07jxmj3"]
+
+[ext_resource type="Script" path="res://scripts/BeatManager.gd" id="1_7buj0"]
+[ext_resource type="PackedScene" uid="uid://dq0mlm1mc0rys" path="res://scenes/level_content.tscn" id="2_hou74"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BeatManager" type="Node2D" parent="."]
+script = ExtResource("1_7buj0")
+
+[node name="LevelContent" parent="." instance=ExtResource("2_hou74")]

@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://dq0mlm1mc0rys"]
+
+[ext_resource type="PackedScene" uid="uid://bsos3ann0bf4" path="res://scenes/character.tscn" id="1_eyry8"]
+[ext_resource type="Script" path="res://scripts/BackgroundManager.gd" id="2_y46pm"]
+[ext_resource type="Texture2D" uid="uid://dbyywh6oaan2x" path="res://sprites/fg_0.png" id="3_uslvi"]
+[ext_resource type="Texture2D" uid="uid://cjdxj2eijswv6" path="res://sprites/bg_2.png" id="4_hvgnl"]
+[ext_resource type="Texture2D" uid="uid://dmegxsdbna7qm" path="res://sprites/bg_1.png" id="5_ut85x"]
+[ext_resource type="Texture2D" uid="uid://doc8phuvpvuj" path="res://sprites/bg_0.png" id="6_qquui"]
+[ext_resource type="PackedScene" uid="uid://dj7ed8d44qq2n" path="res://scenes/beat_timer.tscn" id="7_f384k"]
+[ext_resource type="PackedScene" uid="uid://c3c5l0aox62ai" path="res://scenes/tractor.tscn" id="8_teqq6"]
+[ext_resource type="Script" path="res://scripts/MultiplierLabel.gd" id="9_bh7bv"]
+[ext_resource type="Script" path="res://scripts/PointsLabel.gd" id="10_1rdvp"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="11_jrq7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r27ya"]
+size = Vector2(480, 64)
+
+[node name="LevelContent" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(255.723, 184.083)
+freeze = true
+
+[node name="GroundCollider" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(2.08165e-12, 52)
+shape = SubResource("RectangleShape2D_r27ya")
+
+[node name="Character" parent="." instance=ExtResource("1_eyry8")]
+position = Vector2(195, 160)
+
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource("2_y46pm")
+
+[node name="Foreground" type="Sprite2D" parent="Background"]
+z_index = 1
+texture_repeat = 3
+texture = ExtResource("3_uslvi")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 1440, 270)
+
+[node name="Background_2" type="Sprite2D" parent="Background"]
+z_index = -1
+texture_repeat = 2
+texture = ExtResource("4_hvgnl")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 1440, 270)
+
+[node name="Background_1" type="Sprite2D" parent="Background"]
+z_index = -2
+texture_repeat = 3
+texture = ExtResource("5_ut85x")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 1440, 270)
+
+[node name="Background_0" type="Sprite2D" parent="Background"]
+z_index = -3
+texture = ExtResource("6_qquui")
+centered = false
+
+[node name="Beat Timer" parent="." instance=ExtResource("7_f384k")]
+z_index = 3
+position = Vector2(195, 231.14)
+
+[node name="Tractor" parent="." instance=ExtResource("8_teqq6")]
+position = Vector2(95, 209)
+
+[node name="Multiplier" type="Label" parent="."]
+offset_left = 240.0
+offset_top = 10.0
+offset_right = 470.0
+offset_bottom = 36.0
+text = "Multiplier"
+horizontal_alignment = 2
+script = ExtResource("9_bh7bv")
+
+[node name="Points" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 240.0
+offset_bottom = 36.0
+text = "Points"
+script = ExtResource("10_1rdvp")
+
+[node name="Camera" type="Camera2D" parent="."]
+offset = Vector2(240, 135)
+script = ExtResource("11_jrq7a")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]

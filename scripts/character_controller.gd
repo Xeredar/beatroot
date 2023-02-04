@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var gravity: int = 1000
 @export var extra_jumps: int = 1
 
-@onready var beatmanager = $"../BeatManager"
+@onready var beatmanager = $"../../BeatManager"
 
 var current_jumps: int = 0
 var is_grace: bool = false

@@ -16,10 +16,10 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("jump"):
 		print("Replay triggered!")
-		get_tree().change_scene_to_file("res://scenes/test_konstantin.tscn")
+		get_tree().change_scene_to_file("res://scenes/song_1.tscn")
 	if Input.is_action_just_pressed("turnip"):
 		print("Next Level triggered!")
-		get_tree().change_scene_to_file("res://scenes/test_konstantin.tscn")
+		get_tree().change_scene_to_file("res://scenes/song_1.tscn")
 
 func set_points(text):
 	points_label.set_text("Points:\n{points}".format({"points": text}))
