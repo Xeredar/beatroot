@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dmegxsdbna7qm" path="res://sprites/bg_1.png" id="5_ut85x"]
 [ext_resource type="Texture2D" uid="uid://doc8phuvpvuj" path="res://sprites/bg_0.png" id="6_qquui"]
 [ext_resource type="PackedScene" uid="uid://dj7ed8d44qq2n" path="res://scenes/beat_timer.tscn" id="7_f384k"]
-[ext_resource type="PackedScene" path="res://scenes/tractor.tscn" id="8_teqq6"]
-[ext_resource type="Script" path="res://scripts/MultiplierLabel.gd" id="9_bh7bv"]
+[ext_resource type="PackedScene" uid="uid://c3c5l0aox62ai" path="res://scenes/tractor.tscn" id="8_teqq6"]
+[ext_resource type="PackedScene" uid="uid://cmilhk0xd02lv" path="res://scenes/MultiplierView.tscn" id="9_yg4hf"]
 [ext_resource type="Script" path="res://scripts/PointsLabel.gd" id="10_1rdvp"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="11_jrq7a"]
 
@@ -67,14 +67,8 @@ position = Vector2(195, 231.14)
 [node name="Tractor" parent="." instance=ExtResource("8_teqq6")]
 position = Vector2(95, 209)
 
-[node name="Multiplier" type="Label" parent="."]
-offset_left = 240.0
-offset_top = 10.0
-offset_right = 470.0
-offset_bottom = 36.0
-text = "Multiplier"
-horizontal_alignment = 2
-script = ExtResource("9_bh7bv")
+[node name="Multiplier" parent="." instance=ExtResource("9_yg4hf")]
+position = Vector2(427, 49)
 
 [node name="Points" type="Label" parent="."]
 offset_left = 10.0
