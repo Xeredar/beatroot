@@ -31,6 +31,7 @@ var timeLeft = 0.0
 const BeatScript = preload("res://scripts/Beat.gd")
 const BeatKeyScript = preload("res://scripts/BeatKey.gd")
 @onready var camera = $"../Camera"
+@onready var tractor = $"../Tractor"
 @onready var playerController : CharacterBody2D = $"../Character"
 var beats = []
 var beatKeys = []
@@ -152,6 +153,7 @@ func _process(delta):
 			var distance: float = abs(beat.position.x - playerController.position.x)
 			if playerController.is_on_floor() && beatButtonPressed[beat.beatType] && distance < graceRange:
 				ComboManager.hitTheBeat()
+				tractor.pick_beet()
 				var hit_evaluation = beat_hit_evaluation.instantiate()
 				var evaluation_string = "Good"
 				if distance / graceRange < perfect_distance:
