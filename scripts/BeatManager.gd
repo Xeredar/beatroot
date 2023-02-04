@@ -3,7 +3,7 @@ extends Node2D
 signal beat_grace_start
 signal beat_grace_end
 
-@export var songResourceName = "res://music/song_1_122_bpm_short.mp3"
+@export var songResourceName = "res://music/song_1_122_bpm.mp3"
 @export var songBPM = 122.0
 @export var graceTime = 0.2
 @export var graceRange = 20.0
@@ -43,18 +43,18 @@ var beat_miss_indicator: PackedScene = preload("res://scenes/beat_miss_indicator
 var beat_hit_evaluation: PackedScene = preload("res://scenes/hit_evaluation_texts.tscn")
 
 func _spawnBeat(beatPosition):
-		var beatSprite = BeatScript.new()
-		var beatTypeIndex = randi() % beatTextures.size()
-		var beatTexture = beatTextures[beatTypeIndex]
+	var beatSprite = BeatScript.new()
+	var beatTypeIndex = randi() % beatTextures.size()
+	var beatTexture = beatTextures[beatTypeIndex]
 
-		beatSprite.set_texture(beatTexture)
-		beats.push_back(beatSprite)
-		add_child(beatSprite)
-		beatSprite.position = Vector2(beatPosition, 195.0)
-		beatSprite.speed = speed
-		beatSprite.beatType = beatTypeIndex
+	beatSprite.set_texture(beatTexture)
+	beats.push_back(beatSprite)
+	add_child(beatSprite)
+	beatSprite.position = Vector2(beatPosition, 195.0)
+	beatSprite.speed = speed
+	beatSprite.beatType = beatTypeIndex
 
-		ComboManager.maximumBeats += 1
+	ComboManager.maximumBeats += 1
 
 		var beatKeySprite = BeatKeyScript.new()
 		var keyName = InputMap.action_get_events(beatInputName[beatTypeIndex])[0].as_text().split()[0]
@@ -107,8 +107,9 @@ func _ready():
 
 	var warmupBeatCount = floor(warmupTime * bps)
 	var beatLength = song.get_length() - warmupBeatCount / bps
+	var beatCount = (int)(floor(beatLength * bps) + 1)
 	var beatOffset = warmupBeatCount / bps * speed + playerController.position.x
-	for beat in range(0, beatLength * bps + 1):
+	for beat in range(0, beatCount):
 		var beatPosition = beatOffset + beat / bps * speed
 		if skipNextBeat:
 			skipNextBeat = false
@@ -117,9 +118,9 @@ func _ready():
 			_spawnBigObstacle(beatPosition)
 			wantsBigObstacle = false
 			continue
-		if randi() % (int)(beatLength) <= beat:
-			if randi() % 20 == 0:
-				if randi() % 3 == 0:
+		if randi() % beatCount <= beat * 3 / 4 + beatCount / 4:
+			if randi() % 20 == 0 && beat > beatCount * 0.25:
+				if randi() % 3 == 0 && beat > beatCount * 0.5:
 					wantsBigObstacle = true
 				else:
 					_spawnSmallObstacle(beatPosition)
