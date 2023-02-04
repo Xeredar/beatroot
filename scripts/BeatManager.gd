@@ -218,7 +218,7 @@ func _process(delta):
 			obstacleKey.hide()
 
 func play_sound(sound):
-	if ComboManager.konstantinToggle == false:
+	if ComboManager.konstantinToggle == true:
 		return
 	match (sound):
 		"suck":

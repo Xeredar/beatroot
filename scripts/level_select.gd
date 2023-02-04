@@ -104,9 +104,9 @@ func _on_button_pressed():
 	sound_enabled = !sound_enabled
 	if sound_enabled:
 		sound_button.set_texture(konstantin_on)
-		ComboManager.konstantinToggle = true
+		ComboManager.konstantinToggle = false
 		print("Sound Effects enabled!")
 	else:
 		sound_button.set_texture(konstantin_off)
-		ComboManager.konstantinToggle = false
+		ComboManager.konstantinToggle = true
 		print("Sound Effects disabled!")
