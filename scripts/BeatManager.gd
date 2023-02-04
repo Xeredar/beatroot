@@ -3,6 +3,11 @@ extends Node2D
 signal beat_grace_start
 signal beat_grace_end
 
+@export var songResourceName = "res://music/song_1_122_bpm_short.mp3"
+@export var songBPM = 122.0
+@export var graceTime = 0.2
+@export var graceRange = 20.0
+
 var beatTextures = [load("res://sprites/beet_1.png"), load("res://sprites/carrot.png"), load("res://sprites/turnip.png")]
 var obstacleObjects = [preload("res://scenes/obstacle_small.tscn"), preload("res://scenes/obstacle_big.tscn")]
 var suckSound1 = preload("res://sounds/Suck.ogg")
@@ -18,10 +23,8 @@ var beatInputName = ["beet", "carrot", "turnip"]
 var speed = 150.0
 var bps = 122.0 / 60.0
 const warmupTime = 3.0
-const graceTime = 0.2
-const graceRange = 20.0
-const perfect_distance = 2.0
-const great_distance = 10.0
+const perfect_distance = 0.1
+const great_distance = 0.5
 var timeLeft = 0.0
 @onready var sfx = $"../SFX"
 
@@ -78,8 +81,9 @@ func _spawnBigObstacle(beatPosition):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ComboManager.reset()
+	bps = songBPM / 60.0
 
-	var song = load("res://music/song_1_122_bpm_short.mp3")
+	var song = load(songResourceName)
 	var musicPlayer = AudioStreamPlayer.new()
 	add_child(musicPlayer)
 	musicPlayer.set_stream(song)
@@ -145,7 +149,7 @@ func _process(delta):
 				ComboManager.hitTheBeat()
 				var hit_evaluation = beat_hit_evaluation.instantiate()
 				var evaluation_string = "Good"
-				if distance < perfect_distance:
+				if distance / graceRange < perfect_distance:
 					evaluation_string = "PERFECT!"
 					ComboManager.hitPerfectBeat()
 				elif distance < great_distance:
