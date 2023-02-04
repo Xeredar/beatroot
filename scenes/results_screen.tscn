@@ -65,8 +65,8 @@ label_settings = ExtResource("1_4af0q")
 [node name="ContinueContainer" type="MarginContainer" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 171.979
-offset_bottom = 221.979
+offset_top = 177.9
+offset_bottom = 227.9
 grow_horizontal = 2
 
 [node name="Label" type="Label" parent="ContinueContainer"]
