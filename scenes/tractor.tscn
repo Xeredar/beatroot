@@ -114,6 +114,7 @@ script = ExtResource("1_gwm67")
 [node name="TractorAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Tractor")
 autoplay = "Drive"
+speed_scale = 1.5
 libraries = {
 "": SubResource("AnimationLibrary_belks")
 }
