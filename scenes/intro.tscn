@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://da1eva306upb7"]
+[gd_scene load_steps=14 format=3 uid="uid://da1eva306upb7"]
 
 [ext_resource type="Script" path="res://scripts/intro.gd" id="1_p3non"]
 [ext_resource type="Texture2D" uid="uid://ddx2kdjy4804t" path="res://sprites/talk_bg.png" id="2_ce61s"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://35bd6hhpwima" path="res://sprites/truck.png" id="4_uddm5"]
 [ext_resource type="Texture2D" uid="uid://bi4kavjjxlolf" path="res://sprites/talk_potato_grump.png" id="5_6b2ek"]
 [ext_resource type="Theme" uid="uid://c6wc78uj72tgu" path="res://sprites/pixelfont.tres" id="6_7fcmt"]
+[ext_resource type="Texture2D" uid="uid://6tmgt7flj2g2" path="res://sprites/text_box_p.png" id="6_va75a"]
 [ext_resource type="Texture2D" uid="uid://b50toesjnxaak" path="res://sprites/text_box.png" id="6_vs3qk"]
 [ext_resource type="Texture2D" uid="uid://cmw65cmi2nkf1" path="res://sprites/talk_potato_hap.png" id="7_b7wns"]
 
@@ -100,6 +101,10 @@ position = Vector2(400, 123)
 texture = ExtResource("5_6b2ek")
 offset = Vector2(0, -3.39416)
 
+[node name="SpeechBox" type="Sprite2D" parent="."]
+position = Vector2(79, 177)
+texture = ExtResource("6_va75a")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
@@ -148,5 +153,7 @@ visible_ratio = 0.938
 libraries = {
 "": SubResource("AnimationLibrary_81ga3")
 }
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]
