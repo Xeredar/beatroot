@@ -214,7 +214,6 @@ func _process(delta):
 			obstacle.active = false
 			camera.shake(4)
 		if obstacle.position.x <= playerController.position.x - graceRange:
-				ComboManager.missTheBeat()
 				obstacle.active = false
 				obstacle.hide()
 				obstacleKey.hide()
