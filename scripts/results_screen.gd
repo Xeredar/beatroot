@@ -25,9 +25,8 @@ func set_points(text):
 	points_label.set_text("Points:\n{points}".format({"points": text}))
 
 func set_acuracy(hits: int, accuracy: String, p_hits: int, p_accuracy: String, g_hits: int, g_accuracy: String):
-	accuracy_label.set_text("\
-	Hits: {hits} ({accuracy})\n\
-	PERFECT: {p_hits} ({p_accuracy})\n\
-	Great: {g_hits} ({g_accuracy})"\
+	accuracy_label.set_text("Hits:\n{hits} ({accuracy})\n\
+	PERFECT:\n{p_hits} ({p_accuracy})\n\
+	Great:\n{g_hits} ({g_accuracy})"\
 	.format({"hits": hits, "accuracy": accuracy, "p_hits": p_hits, "p_accuracy": p_accuracy, \
 	"g_hits": g_hits, "g_accuracy": g_accuracy}))
