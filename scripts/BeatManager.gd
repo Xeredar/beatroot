@@ -133,3 +133,16 @@ func _process(delta):
 			ComboManager.collide()
 			obstacle.active = false
 			camera.shake(4)
+
+func play_sound(sound):
+	match (sound):
+		"suck":
+			sfx.stream = suckSounds[randi() % suckSounds.size()]
+			sfx.set_volume_db(-8)
+		"hit":
+			sfx.stream = hitSound1
+			sfx.set_volume_db(-8)
+		"jump":
+			sfx.stream = jumpSound1
+			sfx.set_volume_db(-8)
+	sfx.play()
