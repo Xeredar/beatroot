@@ -3,4 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://b2uff1tske2q2" path="res://sprites/mole1.png" id="1_02wqn"]
 
 [node name="ObstacleSmall" type="Sprite2D"]
+z_index = 2
 texture = ExtResource("1_02wqn")

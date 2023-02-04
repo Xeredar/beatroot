@@ -17,14 +17,15 @@ const BeatScript = preload("res://scripts/Beat.gd")
 var beats = []
 var obstacles = []
 var timer = 0.0
-
+var skipNextBeat = false
 
 func spawn(beatPosition):
 	if randi() % 20 == 0:
 		var obstacleObject = obstacleObjects[0].instantiate()
 		add_child(obstacleObject)
 		obstacles.push_back(obstacleObject)
-		obstacleObject.position = Vector2(beatPosition + 0.5 * speed, 190.0)
+		obstacleObject.position = Vector2(beatPosition + 0.5 / bps * speed, 190.0)
+		skipNextBeat = true
 	else:
 		var beatSprite = BeatScript.new()
 		var beatTypeIndex = randi() % beatTextures.size()
@@ -49,6 +50,9 @@ func _ready():
 	var warmupBeatCount = floor(warmupTime * bps)
 	var beatLength = song.get_length() - warmupBeatCount / bps
 	for beat in range(0, beatLength * bps):
+		if skipNextBeat:
+			skipNextBeat = false
+			continue
 		if randi() % (int)(beatLength) <= beat:
 			spawn(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
 
