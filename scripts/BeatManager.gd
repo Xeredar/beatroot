@@ -20,6 +20,8 @@ var bps = 122.0 / 60.0
 const warmupTime = 3.0
 const graceTime = 0.2
 const graceRange = 20.0
+const perfect_distance = 2.0
+const great_distance = 10.0
 var timeLeft = 0.0
 @onready var sfx = $"../SFX"
 
@@ -34,6 +36,7 @@ var timer = 0.0
 var wantsBigObstacle = false
 var skipNextBeat = false
 var beat_miss_indicator: PackedScene = preload("res://scenes/beat_miss_indicator.tscn")
+var beat_hit_evaluation: PackedScene = preload("res://scenes/hit_evaluation_texts.tscn")
 
 func _spawnBeat(beatPosition):
 		var beatSprite = BeatScript.new()
@@ -76,29 +79,29 @@ func _spawnBigObstacle(beatPosition):
 func _ready():
 	ComboManager.reset()
 
-	var song = load("res://music/song_1_122_bpm.mp3")
+	var song = load("res://music/song_1_122_bpm_short.mp3")
 	var musicPlayer = AudioStreamPlayer.new()
 	add_child(musicPlayer)
 	musicPlayer.set_stream(song)
 	musicPlayer.play()
-	timeLeft = song.get_length()
+	timeLeft = song.get_length() + 3.0
 
 	var warmupBeatCount = floor(warmupTime * bps)
 	var beatLength = song.get_length() - warmupBeatCount / bps
-	for beat in range(0, beatLength * bps):
+	for beat in range(0, beatLength * bps + 1):
 		if skipNextBeat:
 			skipNextBeat = false
 			continue
 		if wantsBigObstacle:
-			_spawnBigObstacle(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
+			_spawnBigObstacle(warmupBeatCount / bps * speed + beat / bps * speed + playerController.position.x)
 			wantsBigObstacle = false
 			continue
-		if randi() % (int)(beatLength) <= beat:
+		if randi() % (int)(beatLength) <= 1000:#beat:
 			if randi() % 20 == 0:
 				if randi() % 3 == 0:
 					wantsBigObstacle = true
 				else:
-					_spawnSmallObstacle(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
+					_spawnSmallObstacle(warmupBeatCount / bps * speed + beat / bps * speed + playerController.position.x)
 			else:
 				_spawnBeat(warmupBeatCount * speed + beat / bps * speed + playerController.position.x)
 	
@@ -108,7 +111,6 @@ func fade_black_animation_finished(anim_name):
 	if (anim_name == "fade_in_black"):
 		FadeBlack.fade_out_black()
 		get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -136,8 +138,19 @@ func _process(delta):
 		var beat = beats[n]
 		var beatKey = beatKeys[n]
 		if beat.isActive:
-			if playerController.is_on_floor() && beatButtonPressed[beat.beatType] && abs(beat.position.x - playerController.position.x) < graceRange:
+			var distance: float = abs(beat.position.x - playerController.position.x)
+			if playerController.is_on_floor() && beatButtonPressed[beat.beatType] && distance < graceRange:
 				ComboManager.hitTheBeat()
+				var hit_evaluation = beat_hit_evaluation.instantiate()
+				var evaluation_string = "Good"
+				if distance < perfect_distance:
+					evaluation_string = "PERFECT!"
+					ComboManager.hitPerfectBeat()
+				elif distance < great_distance:
+					evaluation_string = "Great!"
+					ComboManager.hitGreatBeat()
+				hit_evaluation.show_evaluation(evaluation_string)
+				add_child(hit_evaluation)
 				didHitBeat = true
 				beat.isActive = false
 				beat.hide()

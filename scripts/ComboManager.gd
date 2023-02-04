@@ -6,6 +6,8 @@ var totalMissedBeats = 0
 var totalHitBeats = 0
 var totalPoints = 0
 var maximumBeats = 0
+var perfectBeats = 0
+var greatBeats = 0
 
 func reset():
 	currentComboCount = 0
@@ -20,6 +22,14 @@ func hitTheBeat():
 	totalHitBeats += 1
 	totalPoints += currentMultiplier
 	currentMultiplier = min(1 + floor(currentComboCount * 0.5), 8)
+
+
+func hitPerfectBeat():
+	perfectBeats += 1
+
+
+func hitGreatBeat():
+	greatBeats += 1
 
 
 func missTheBeat():

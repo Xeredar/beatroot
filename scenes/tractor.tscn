@@ -1,0 +1,133 @@
+[gd_scene load_steps=16 format=3 uid="uid://c3c5l0aox62ai"]
+
+[ext_resource type="Texture2D" uid="uid://dx8njvpfkfog6" path="res://sprites/tractor_0.png" id="1_4bqyd"]
+[ext_resource type="Script" path="res://scripts/Tractor.gd" id="1_gwm67"]
+[ext_resource type="Texture2D" uid="uid://63vp4ketckkf" path="res://sprites/tractor_1.png" id="2_0rngi"]
+[ext_resource type="Texture2D" uid="uid://phgaumy71ye2" path="res://sprites/tractor_2.png" id="3_phgiw"]
+[ext_resource type="Texture2D" uid="uid://wr4bt7riw1fb" path="res://sprites/vacuum_0.png" id="4_wpbh3"]
+[ext_resource type="Texture2D" uid="uid://g1dwnosq0oee" path="res://sprites/vacuum_1.png" id="5_pynug"]
+[ext_resource type="Texture2D" uid="uid://r4ihvtd72quc" path="res://sprites/vacuum_3.png" id="6_vhaay"]
+[ext_resource type="Texture2D" uid="uid://bm2xwwiiow7cx" path="res://sprites/vacuum_4.png" id="7_3vl3s"]
+[ext_resource type="Texture2D" uid="uid://ck4p1hdxtkjhu" path="res://sprites/vacuum_5.png" id="8_qoc55"]
+
+[sub_resource type="Animation" id="Animation_6uyn5"]
+resource_name = "Drive"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_4bqyd"), ExtResource("2_0rngi"), ExtResource("3_phgiw"), ExtResource("1_4bqyd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Vacuum:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(92, 20), Vector2(92, 22), Vector2(92, 21), Vector2(92, 20)]
+}
+
+[sub_resource type="Animation" id="Animation_rrhg3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_4bqyd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Vacuum:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(92, 22)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_belks"]
+_data = {
+"Drive": SubResource("Animation_6uyn5"),
+"RESET": SubResource("Animation_rrhg3")
+}
+
+[sub_resource type="Animation" id="Animation_vd8ev"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tractor/Vacuum:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_wpbh3")]
+}
+
+[sub_resource type="Animation" id="Animation_vcysk"]
+resource_name = "suck"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tractor/Vacuum:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.105551, 0.234695, 0.368001, 0.515266, 0.731839),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_wpbh3"), ExtResource("5_pynug"), ExtResource("6_vhaay"), ExtResource("7_3vl3s"), ExtResource("8_qoc55"), ExtResource("4_wpbh3")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wxy4m"]
+_data = {
+"RESET": SubResource("Animation_vd8ev"),
+"suck": SubResource("Animation_vcysk")
+}
+
+[node name="Tractor" type="Node2D"]
+script = ExtResource("1_gwm67")
+
+[node name="TractorAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Tractor")
+autoplay = "Drive"
+libraries = {
+"": SubResource("AnimationLibrary_belks")
+}
+
+[node name="VacuumAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wxy4m")
+}
+
+[node name="Tractor" type="Sprite2D" parent="."]
+position = Vector2(0, -83)
+texture = ExtResource("1_4bqyd")
+
+[node name="Vacuum" type="Sprite2D" parent="Tractor"]
+z_index = -1
+position = Vector2(92, 22)
+texture = ExtResource("4_wpbh3")

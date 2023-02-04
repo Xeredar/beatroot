@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqhfw4wbf61bl"
-path.etc2="res://.godot/imported/talk_turnip_neutral.png-426d3a27725476e57525bdf22a841dd9.etc2.ctex"
+uid="uid://g1dwnosq0oee"
+path="res://.godot/imported/vacuum_1.png-6569494e1238f9014650d5cfb241390e.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/talk_turnip_neutral.png"
-dest_files=["res://.godot/imported/talk_turnip_neutral.png-426d3a27725476e57525bdf22a841dd9.etc2.ctex"]
+source_file="res://sprites/vacuum_1.png"
+dest_files=["res://.godot/imported/vacuum_1.png-6569494e1238f9014650d5cfb241390e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

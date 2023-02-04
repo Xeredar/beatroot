@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci0qfbla2ia62"]
+[gd_scene load_steps=5 format=3 uid="uid://cnfxsxxmfjufp"]
 
 [ext_resource type="Texture2D" uid="uid://df4xmgiiewxj6" path="res://sprites/icon.svg" id="1_jxorc"]
-[ext_resource type="Script" path="res://Beat_Miss_Indicator.gd" id="2_lxjy5"]
+[ext_resource type="Script" path="res://scripts/Beat_Miss_Indicator.gd" id="2_otwye"]
 
 [sub_resource type="Animation" id="Animation_uar4i"]
 resource_name = "fade"
@@ -37,9 +37,11 @@ _data = {
 }
 
 [node name="Beat_Miss_Indicator" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0)
 z_index = 10
+scale = Vector2(2, 2)
 texture = ExtResource("1_jxorc")
-script = ExtResource("2_lxjy5")
+script = ExtResource("2_otwye")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

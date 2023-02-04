@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfejq7vndtdmd"]
+
+[ext_resource type="LabelSettings" path="res://sprites/pixelfont_label.tres" id="1_bqm7o"]
+[ext_resource type="Script" path="res://scripts/hit_evaluation_text_controller.gd" id="1_q45of"]
+
+[sub_resource type="Animation" id="Animation_kwhkc"]
+resource_name = "move_up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(131, 236), Vector2(131, 180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(6.9644, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_klwti"]
+_data = {
+"move_up": SubResource("Animation_kwhkc")
+}
+
+[node name="Hit_Evaluation_Text" type="Label"]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+offset_left = 131.0
+offset_top = 180.0
+offset_right = 259.0
+offset_bottom = 196.0
+label_settings = ExtResource("1_bqm7o")
+horizontal_alignment = 1
+script = ExtResource("1_q45of")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_klwti")
+}
