@@ -5,13 +5,11 @@ extends CanvasLayer
 @onready var song3_button : Button = $MarginContainer/ScrollContainer/VBoxContainer/Panel3/Song3Button
 @onready var song4_button : Button = $MarginContainer/ScrollContainer/VBoxContainer/Panel4/Song4Button
 @onready var song5_button : Button = $MarginContainer/ScrollContainer/VBoxContainer/Panel5/Song5Button
-@onready var song6_button : Button = $MarginContainer/ScrollContainer/VBoxContainer/Panel6/Song6Button
 @onready var song1_label : Label = $MarginContainer/ScrollContainer/VBoxContainer/Panel/Song1
 @onready var song2_label : Label = $MarginContainer/ScrollContainer/VBoxContainer/Panel2/Song2
 @onready var song3_label : Label = $MarginContainer/ScrollContainer/VBoxContainer/Panel3/Song3
 @onready var song4_label : Label = $MarginContainer/ScrollContainer/VBoxContainer/Panel4/Song4
 @onready var song5_label : Label = $MarginContainer/ScrollContainer/VBoxContainer/Panel5/Song5
-@onready var song6_label : Label = $MarginContainer/ScrollContainer/VBoxContainer/Panel6/Song6
 @onready var sound_button : Sprite2D = $KonstantineToggle
 @onready var play_button : Button = $PlayButton
 @onready var artists_display : Label = $MarginContainer2/Panel/Artist/Label
@@ -26,13 +24,13 @@ var allSongArtists = []
 var allDifficultis = []
 var allSongLabels = []
 var selected_song = 0
-var allSongScenes = ["song_6", "song_1", "song_8", "song_5", "song_7"]
+var allSongScenes = ["song_1", "song_2", "song_3", "song_4", "song_5"]
 
 func _ready():
 	allSongTitles = ["Feathers and Pillow", "Silhoutte Pt. II", "Night Rave", "None Of It", "Knife Crayons"]
 	allSongArtists = ["Sara Afonso", "whatfunk", "Jason Shaw", "whatfunk", "Gigakoops"]
 	allDifficultis = [0, 1, 1, 1, 2]
-	allSongLabels = [song1_label, song2_label, song3_label, song4_label, song5_label, song6_label]
+	allSongLabels = [song1_label, song2_label, song3_label, song4_label, song5_label]
 	fill_songlist()
 	fill_details()
 
@@ -94,11 +92,6 @@ func _on_song_4_button_button_down():
 func _on_song_5_button_pressed():
 	allSongLabels[selected_song].get_parent().get_child(2).hide()
 	selected_song = 4
-	fill_details()
-
-func _on_song_6_button_pressed():
-	allSongLabels[selected_song].get_parent().get_child(2).hide()
-	selected_song = 5
 	fill_details()
 
 func _on_play_button_pressed():

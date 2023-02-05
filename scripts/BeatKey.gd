@@ -4,6 +4,7 @@ var speed : float
 var isActive = true
 
 @onready var font = load("res://sprites/kongtext.ttf")
+var space_sprite = preload("res://sprites/space2.png")
 
 func _ready():
 	size = Vector2(10, 10)
@@ -18,4 +19,10 @@ func _process(delta):
 	position.x -= speed * delta
 
 func setKeyName(keyName: String):
-	text = keyName
+	if keyName == "␣":
+		var sprite = Sprite2D.new()
+		add_child(sprite)
+		sprite.set_texture(space_sprite)
+		sprite.set_offset(Vector2(0, 10))
+	else:
+		text = keyName
