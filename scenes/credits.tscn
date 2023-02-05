@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://dso5k42oc7gun"]
+
+[ext_resource type="Script" path="res://scenes/credits.gd" id="1_l6d0s"]
+[ext_resource type="Texture2D" uid="uid://b4mue7pans8mn" path="res://sprites/credits.png" id="1_qeydn"]
+[ext_resource type="Theme" uid="uid://c6wc78uj72tgu" path="res://sprites/pixelfont.tres" id="2_oqolj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l0pye"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_l6d0s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qeydn")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 100.0
+offset_top = 20.0
+offset_right = 420.0
+offset_bottom = 267.0
+theme = ExtResource("2_oqolj")
+text = "A Global Game Jam game by:
+Xeredar
+HoppelHoop
+Marig
+Manikobunneh
+Slin
+Seref
+
+Menu Music by VOiD1 Gaming"
+label_settings = SubResource("LabelSettings_l0pye")
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 20
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("2_oqolj")
+text = "Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

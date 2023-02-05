@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8y87f148q824"]
+[gd_scene load_steps=8 format=3 uid="uid://c8y87f148q824"]
 
 [ext_resource type="Script" path="res://scripts/title.gd" id="1_vdxm6"]
 [ext_resource type="Texture2D" uid="uid://dk238vdyhlcux" path="res://sprites/title_e.png" id="2_m8ogb"]
 [ext_resource type="Texture2D" uid="uid://lpe883e3rfeh" path="res://sprites/title_title.png" id="3_fh6g3"]
 [ext_resource type="LabelSettings" uid="uid://b3w8fu1mk1mvm" path="res://sprites/pixelfont_label.tres" id="4_pv2t0"]
+[ext_resource type="Theme" uid="uid://c6wc78uj72tgu" path="res://sprites/pixelfont.tres" id="5_jisvl"]
 
 [sub_resource type="Animation" id="Animation_wcqiv"]
 resource_name = "Pulse"
@@ -56,3 +57,16 @@ or A Button
 to Start"
 label_settings = ExtResource("4_pv2t0")
 horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_bottom = 24.0
+grow_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("5_jisvl")
+text = "Credits"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

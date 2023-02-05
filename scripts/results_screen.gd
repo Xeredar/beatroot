@@ -14,6 +14,12 @@ func _ready():
 	var g_accuracy = str(round(ComboManager.greatBeats / max((float)(ComboManager.totalHitBeats), 1.0) * 100)) + "%"
 	set_acuracy(ComboManager.totalHitBeats, accuracy, ComboManager.perfectBeats, p_accuracy, ComboManager.greatBeats, g_accuracy)
 	$AnimationPlayer.play("blink")
+	if ComboManager.controller_enabled:
+		continue_label.set_text(
+			"Press A to Continue \n
+			Press Y to Retry \n
+			Press X for Highscore"
+		)
 
 func _physics_process(delta: float) -> void:
 	if first_time:

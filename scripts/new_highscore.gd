@@ -1,11 +1,13 @@
 extends CanvasLayer
 
 @onready var highscore_name_field = $Highscore_Name
+@onready var label = $Label2
 
 func _ready() -> void:
 	MenuAudio.play_music()
 	highscore_name_field.grab_focus()
-
+	if ComboManager.controller_enabled:
+		label.set_text("Press A to confirm")
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):

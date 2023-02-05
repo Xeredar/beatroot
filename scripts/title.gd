@@ -15,3 +15,6 @@ func _unhandled_input(event):
 		if event.pressed and Input.is_key_pressed(KEY_SPACE):
 			ComboManager.controller_enabled = false
 	print("Controller is: " + str(ComboManager.controller_enabled))
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/credits.tscn")
