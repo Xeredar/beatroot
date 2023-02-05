@@ -226,6 +226,7 @@ func _process(delta):
 			ComboManager.collide()
 			obstacle.active = false
 			camera.shake(4)
+			playerController.hit()
 		if obstacleKeyDistance < -graceRange:
 			obstacleKey.hide()
 

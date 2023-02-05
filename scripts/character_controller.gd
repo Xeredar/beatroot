@@ -5,6 +5,9 @@ extends CharacterBody2D
 @export var extra_jumps: int = 1
 
 @onready var beatmanager = $"../../BeatManager"
+@onready var hit_particle1 = $AnimatedSprite2D/CPUParticles2D
+@onready var hit_particle2 = $AnimatedSprite2D/CPUParticles2D2
+@onready var hit_particle3 = $AnimatedSprite2D/CPUParticles2D3
 
 signal victory_animation_done
 var current_jumps: int = 0
@@ -44,7 +47,11 @@ func _physics_process(delta) -> void:
 func _set_grace_true() -> void:
 	is_grace = true
 
-
+func hit():
+	hit_particle1.set_emitting(true)
+	hit_particle2.set_emitting(true)
+	hit_particle3.set_emitting(true)
+	
 func _set_grace_false() -> void:
 	is_grace = false
 	
