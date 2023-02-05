@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8dmebkjl1rlp" path="res://sprites/level_select.png" id="2_asan8"]
 [ext_resource type="Texture2D" uid="uid://cbamm0uxs5aee" path="res://sprites/text_board.png" id="2_rcl7u"]
 [ext_resource type="Script" path="res://scenes/ScrollContainer.gd" id="3_hxynu"]
-[ext_resource type="Theme" path="res://sprites/pixelfont.tres" id="3_xob40"]
+[ext_resource type="Theme" uid="uid://c6wc78uj72tgu" path="res://sprites/pixelfont.tres" id="3_xob40"]
 [ext_resource type="FontFile" uid="uid://dox7gol2t7u74" path="res://sprites/kongtext.ttf" id="5_dksj0"]
 [ext_resource type="Texture2D" uid="uid://ct8g2l6ondn1n" path="res://sprites/soundOn.png" id="6_6xnmg"]
 [ext_resource type="Texture2D" uid="uid://d1aik63g5soyp" path="res://sprites/playnip.png" id="7_5c4xj"]
