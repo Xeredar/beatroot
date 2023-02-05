@@ -11,7 +11,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(_beatManager.timeLeft)
 	var l = _beatManager.songLength
 	var t = l - _beatManager.timeLeft
 	set_progress(t / l)
