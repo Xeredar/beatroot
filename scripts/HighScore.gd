@@ -107,7 +107,6 @@ func add_highscore_entry_server(level: String, name: String = "Default", points:
 
 	# Perform a GET request. The URL below returns JSON as of writing.
 	var requestURL = "https://api.slin.dev/beatroot/v1/add?scene={level}&name={name}&points={points}".format({"level": level, "name": name.strip_edges(), "points": points})
-	print(requestURL)
 	var error = http_request.request(requestURL)
 	if error != OK:
 		push_warning("An error occurred in the HTTP request.")
@@ -136,4 +135,3 @@ func _server_list_response(result, response_code, headers, body):
 	all_highscores[response["scene"]] = []
 	for entry in response["list"]:
 		all_highscores[response["scene"]].push_back(entry["metadata"])
-	print(all_highscores)
