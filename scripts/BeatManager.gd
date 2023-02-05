@@ -199,7 +199,8 @@ func _process(delta):
 				add_child(hit_evaluation)
 				didHitBeat = true
 				beat.isActive = false
-				beat.hide()
+				beat.emit()
+				beat.set_texture(null)
 				beatKey.hide()
 				play_sound("suck")
 			if beat.position.x <= playerController.position.x - graceRange:
