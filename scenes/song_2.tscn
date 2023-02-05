@@ -7,6 +7,6 @@
 
 [node name="BeatManager" type="Node2D" parent="."]
 script = ExtResource("1_ottq1")
-songResourceName = "res://music/song_2_122_bpm.mp3"
+songResourceName = "res://music/song_2_122_bpm_short.mp3"
 
 [node name="LevelContent" parent="." instance=ExtResource("2_jlf4s")]
