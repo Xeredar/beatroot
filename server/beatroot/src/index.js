@@ -41,7 +41,7 @@ async function handleRequest(request, env)
                 }
             }
 
-            return new Response("Success", {status: 200, headers: {'content-type': 'application/json;charset=UTF-8'}})
+            return new Response("Success", {status: 200, headers: {'content-type': 'application/json;charset=UTF-8', 'Access-Control-Allow-Origin': '*', 'Vary': 'Origin', 'Cache-Control': 'no-store'}})
         }
 
         case 'list':
@@ -49,7 +49,7 @@ async function handleRequest(request, env)
             let url = new URL(request.url)
             let scene = url.searchParams.get("scene")
             let pointss = await env.BEATROOT.list({prefix:"points:" + scene + ":"})
-            return new Response(JSON.stringify({scene: scene, list: pointss.keys}), {status: 200, headers: {'content-type': 'application/json;charset=UTF-8'}})
+            return new Response(JSON.stringify({scene: scene, list: pointss.keys}), {status: 200, headers: {'content-type': 'application/json;charset=UTF-8', 'Access-Control-Allow-Origin': '*', 'Vary': 'Origin', 'Cache-Control': 'no-store'}})
         }
     }
 
