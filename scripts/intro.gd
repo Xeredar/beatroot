@@ -51,7 +51,6 @@ func _play_scene():
 	if current_state == states.SLIDE_IN:
 		_slide_in_quest_giver()
 	if current_state == states.DISPLAY_TEXT and not text_scrolling:
-		print("render text triggered")
 		_render_text()
 
 func _hide_text():

@@ -43,7 +43,6 @@ func _process(delta):
 		ComboManager.currentLevel = allSongScenes[selected_song]
 		get_tree().change_scene_to_file("res://scenes/" + ComboManager.currentLevel + ".tscn")
 	if Input.is_action_just_pressed("down"):
-		print("Down Pressed!")
 		if selected_song < allSongTitles.size() - 1:
 			allSongLabels[selected_song].get_parent().get_child(2).hide()
 			selected_song = selected_song + 1
