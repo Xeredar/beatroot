@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var _tractor : AnimationPlayer = $TractorAnimationPlayer
 @onready var _vacuum : AnimationPlayer = $VacuumAnimationPlayer
+@onready var _smokeEmitter : CPUParticles2D = $SmokeEmitter
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,3 +21,4 @@ func pick_beet():
 func stop():
 	_vacuum.stop()
 	_tractor.stop()
+	_smokeEmitter.set_emitting(false)

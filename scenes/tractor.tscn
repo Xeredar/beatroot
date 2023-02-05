@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3c5l0aox62ai"]
+[gd_scene load_steps=17 format=3 uid="uid://c3c5l0aox62ai"]
 
 [ext_resource type="Texture2D" uid="uid://dx8njvpfkfog6" path="res://sprites/tractor_0.png" id="1_4bqyd"]
 [ext_resource type="Script" path="res://scripts/Tractor.gd" id="1_gwm67"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://r4ihvtd72quc" path="res://sprites/vacuum_3.png" id="6_vhaay"]
 [ext_resource type="Texture2D" uid="uid://bm2xwwiiow7cx" path="res://sprites/vacuum_4.png" id="7_3vl3s"]
 [ext_resource type="Texture2D" uid="uid://ck4p1hdxtkjhu" path="res://sprites/vacuum_5.png" id="8_qoc55"]
+[ext_resource type="Texture2D" uid="uid://ws2enmgks0d7" path="res://sprites/smoke3.png" id="10_4fg1j"]
 
 [sub_resource type="Animation" id="Animation_6uyn5"]
 resource_name = "Drive"
@@ -125,6 +126,17 @@ libraries = {
 "": SubResource("AnimationLibrary_wxy4m")
 }
 
+[node name="SmokeEmitter" type="CPUParticles2D" parent="."]
+position = Vector2(-36, -136)
+rotation = -2.49745
+scale = Vector2(1, 1)
+lifetime = 6.19
+texture = ExtResource("10_4fg1j")
+spread = 21.62
+gravity = Vector2(0, 0)
+initial_velocity_min = 81.2
+initial_velocity_max = 98.52
+
 [node name="Tractor" type="Sprite2D" parent="."]
 position = Vector2(0, -83)
 texture = ExtResource("1_4bqyd")
@@ -133,3 +145,11 @@ texture = ExtResource("1_4bqyd")
 z_index = -1
 position = Vector2(92, 22)
 texture = ExtResource("4_wpbh3")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(-36, -136)
+rotation = -2.1082
+spread = 21.62
+initial_velocity_min = 296.3
+initial_velocity_max = 300.41
