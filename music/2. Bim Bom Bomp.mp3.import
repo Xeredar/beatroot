@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cws4ykfut1caf"
+path="res://.godot/imported/2. Bim Bom Bomp.mp3-971b908a6d08286baba2eadeb7072c29.mp3str"
+
+[deps]
+
+source_file="res://music/2. Bim Bom Bomp.mp3"
+dest_files=["res://.godot/imported/2. Bim Bom Bomp.mp3-971b908a6d08286baba2eadeb7072c29.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

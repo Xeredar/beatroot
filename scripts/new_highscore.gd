@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var highscore_name_field = $Highscore_Name
 
 func _ready() -> void:
+	MenuAudio.play_music()
 	highscore_name_field.grab_focus()
 
 

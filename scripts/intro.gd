@@ -102,7 +102,7 @@ func _render_text():
 	else:
 		speech_box.set_texture(potato_speech)
 		animation_player.play("talk_potato")
-	
+
 func _play_speech(speech_number):
 	match speech_number:
 		0:

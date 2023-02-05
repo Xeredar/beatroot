@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var first_time = true
 
 func _ready():
+	MenuAudio.play_music()
 	accuracy_label.set_text("")
 	points_label.set_text("")
 	set_points(ComboManager.totalPoints)

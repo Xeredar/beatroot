@@ -20,6 +20,7 @@ config/icon="res://sprites/icon.svg"
 ComboManager="*res://scripts/ComboManager.gd"
 FadeBlack="*res://scenes/fade_black.tscn"
 HighScore="*res://scripts/HighScore.gd"
+MenuAudio="*res://scenes/MenuAudio.tscn"
 
 [display]
 

@@ -97,6 +97,7 @@ func _on_song_5_button_pressed():
 func _on_play_button_pressed():
 	print("Loading Song: " + str(selected_song))
 	ComboManager.currentLevel = allSongScenes[selected_song]
+	MenuAudio.stop_music()
 	get_tree().change_scene_to_file("res://scenes/" + ComboManager.currentLevel + ".tscn")
 
 func _on_button_pressed():
