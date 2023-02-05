@@ -1,7 +1,7 @@
 extends Label
 
 func _ready() -> void:
-	text = "Highscores\n\n" + _stringify_highscores()
+	text = _stringify_highscores()
 
 
 func _stringify_highscores() -> String:

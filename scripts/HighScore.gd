@@ -27,6 +27,10 @@ func add_highscore_entry(level: String, name: String = "Default", points: int = 
 		all_highscores = {level: [{"name": name, "points": points}]}
 		return
 
+	if not all_highscores.has(level):
+		all_highscores[level] = [{"name": name, "points": points}]
+		return
+
 	var highscores: Array = all_highscores[level]
 	highscores.append({"name": name, "points": points})
 	highscores.sort_custom(_highscore_comparison)
