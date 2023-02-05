@@ -20,6 +20,9 @@ func _ready() -> void:
 		beatmanager.connect("beat_grace_start", _set_grace_true)
 		beatmanager.connect("beat_grace_end", _set_grace_false)
 		game_ended = false
+		gravity = gravity * (beatmanager.songBPM / (float)(122))
+		if beatmanager.songBPM > 122:
+			jump_speed = max(jump_speed * (beatmanager.songBPM / (float)(122)), -425)
 
 
 func _physics_process(delta) -> void:
