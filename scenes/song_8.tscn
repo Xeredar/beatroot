@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/BeatManager.gd" id="1_5rgoh"]
 [ext_resource type="PackedScene" uid="uid://dq0mlm1mc0rys" path="res://scenes/level_content.tscn" id="2_ujypr"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="BeatManager" type="Node2D" parent="."]
 script = ExtResource("1_5rgoh")

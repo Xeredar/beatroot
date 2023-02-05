@@ -1,10 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://ccsn6ccthu706"]
+[gd_scene load_steps=33 format=3 uid="uid://bw770lmco2ep1"]
 
 [ext_resource type="Script" path="res://scripts/level_select.gd" id="1_v00s8"]
 [ext_resource type="Texture2D" uid="uid://8dmebkjl1rlp" path="res://sprites/level_select.png" id="2_asan8"]
 [ext_resource type="Texture2D" uid="uid://cbamm0uxs5aee" path="res://sprites/text_board.png" id="2_rcl7u"]
 [ext_resource type="Script" path="res://scenes/ScrollContainer.gd" id="3_hxynu"]
-[ext_resource type="Theme" uid="uid://c6wc78uj72tgu" path="res://sprites/pixelfont.tres" id="3_xob40"]
+[ext_resource type="Theme" path="res://sprites/pixelfont.tres" id="3_xob40"]
 [ext_resource type="FontFile" uid="uid://dox7gol2t7u74" path="res://sprites/kongtext.ttf" id="5_dksj0"]
 [ext_resource type="Texture2D" uid="uid://ct8g2l6ondn1n" path="res://sprites/soundOn.png" id="6_6xnmg"]
 [ext_resource type="Texture2D" uid="uid://d1aik63g5soyp" path="res://sprites/playnip.png" id="7_5c4xj"]
@@ -41,10 +41,6 @@ border_width_bottom = 4
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxte5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ghaw"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gr0g"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4h770"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4yla3"]
 
@@ -293,44 +289,6 @@ offset_bottom = 50.0
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gmx0m")
 
-[node name="Panel6" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_rcl7u")
-
-[node name="Song6Button" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel6"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_4aa6b")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_4gr0g")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_4h770")
-
-[node name="Song6" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel6"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -46.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_xob40")
-text = "Song 1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Selector" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel6"]
-visible = false
-layout_mode = 0
-offset_right = 203.0
-offset_bottom = 50.0
-
-[node name="Panel" type="Panel" parent="MarginContainer/ScrollContainer/VBoxContainer/Panel6/Selector"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_gmx0m")
-
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 anchors_preset = 11
 anchor_left = 1.0
@@ -426,6 +384,5 @@ icon = ExtResource("7_5c4xj")
 [connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Panel3/Song3Button" to="." method="_on_song_3_button_pressed"]
 [connection signal="button_down" from="MarginContainer/ScrollContainer/VBoxContainer/Panel4/Song4Button" to="." method="_on_song_4_button_button_down"]
 [connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Panel5/Song5Button" to="." method="_on_song_5_button_pressed"]
-[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Panel6/Song6Button" to="." method="_on_song_6_button_pressed"]
 [connection signal="pressed" from="KonstantineToggle/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
