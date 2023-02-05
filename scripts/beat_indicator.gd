@@ -28,3 +28,6 @@ func _reset():
 	center_indicator.scale = Vector2(1, 1);
 	left_indicator.position.x = -indicator_x_offset;
 	right_indicator.position.x = indicator_x_offset;
+	
+func stop():
+	hide()

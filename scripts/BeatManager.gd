@@ -44,6 +44,7 @@ var wantsBigObstacle = false
 var skipNextBeat = false
 var beat_miss_indicator: PackedScene = preload("res://scenes/beat_miss_indicator.tscn")
 var beat_hit_evaluation: PackedScene = preload("res://scenes/hit_evaluation_texts.tscn")
+@onready var beat_timer = $"../LevelContent/BeatTimer"
 
 func _spawnBeat(beatPosition):
 	var beatSprite = BeatScript.new()
@@ -226,7 +227,7 @@ func end_round():
 	playerController.connect("victory_animation_done", _on_animation_finished)
 	tractor.stop()
 	background.stop()
-	beat_miss_indicator.hide()
+	beat_timer.hide()
 
 func _on_animation_finished():
 	FadeBlack.fade_in_black()

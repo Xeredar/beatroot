@@ -71,7 +71,7 @@ func _process(delta):
 			current_state = states.DISPLAY_TEXT
 			_play_scene()
 
-	if Input.is_action_just_pressed("jump") and current_state == states.WAIT:
+	if Input.is_action_just_pressed("jump") and current_state == states.WAIT and current_text != texts.size():
 		current_text = current_text + 1
 		speech_label.set_visible_ratio(0)
 		if current_text == texts.size():

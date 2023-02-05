@@ -136,7 +136,7 @@ autoplay = "default"
 
 [node name="VictoryAnimatedSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(58, -31)
+position = Vector2(58, -28)
 sprite_frames = SubResource("SpriteFrames_jdx8a")
 
 [connection signal="animation_finished" from="VictoryAnimatedSprite" to="." method="_on_victory_animated_sprite_animation_finished"]
