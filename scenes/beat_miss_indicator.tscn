@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cf7c7hi2ukbft" path="res://sprites/ouch.png" id="1_hh575"]
 [ext_resource type="Script" path="res://scripts/Beat_Miss_Indicator.gd" id="2_otwye"]
 
-[sub_resource type="Animation" id="Animation_csfow"]
+[sub_resource type="Animation" id="Animation_tncqh"]
 resource_name = "fade"
 length = 0.2
 tracks/0/type = "value"
@@ -31,9 +31,9 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6wnt8"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ea3na"]
 _data = {
-"fade": SubResource("Animation_csfow")
+"fade": SubResource("Animation_tncqh")
 }
 
 [node name="Beat_Miss_Indicator" type="Sprite2D"]
@@ -45,5 +45,5 @@ script = ExtResource("2_otwye")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_6wnt8")
+"": SubResource("AnimationLibrary_ea3na")
 }

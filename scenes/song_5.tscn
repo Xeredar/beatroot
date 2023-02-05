@@ -7,7 +7,8 @@
 
 [node name="BeatManager" type="Node2D" parent="."]
 script = ExtResource("1_ardvn")
-songResourceName = "res://music/song_5_128_bpm.mp3"
-songBPM = 128.0
+songResourceName = "res://music/song_5_234_bpm.mp3"
+songBPM = 234.0
+beatStartOffset = 0.436
 
 [node name="LevelContent" parent="." instance=ExtResource("2_o732v")]
