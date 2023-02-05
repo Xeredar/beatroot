@@ -40,6 +40,7 @@ func _process(delta):
 		return
 	if Input.is_action_just_pressed("jump"):
 		get_tree().change_scene_to_file("res://scenes/" + allSongScenes[selected_song] + ".tscn")
+		MenuAudio.stop_music()
 	if Input.is_action_just_pressed("down"):
 		print("Down Pressed!")
 		if selected_song < allSongTitles.size() - 1:
