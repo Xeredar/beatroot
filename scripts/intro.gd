@@ -7,7 +7,10 @@ extends CanvasLayer
 @onready var speech_box : Sprite2D = $SpeechBox
 var potato_speech = preload("res://sprites/text_box_p.png")
 var turnip_speech = preload("res://sprites/text_box_t.png")
-var potato_speech_sound = preload("res://sounds/potatoSpeech.ogg")
+var potato_speech_sound1 = preload("res://sounds/PotatoSpeech1.ogg")
+var potato_speech_sound2 = preload("res://sounds/PotatoSpeech2.ogg")
+var potato_speech_sound3 = preload("res://sounds/PotatoSpeech3.ogg")
+var potato_speech_sound4 = preload("res://sounds/PotatoSpeech4.ogg")
 var turnip_speech_sound = preload("res://sounds/turnipSpeech.ogg")
 var text_scrolling = false
 var text = ""
@@ -16,7 +19,7 @@ var move_questgiver = false
 var questgiver_target = Vector2(87, 130)
 var potato_target = Vector2(350, 130)
 var speed = 200
-var texts = ["Hello there y'all! I need sum' helpin' with 'dem there beets!", "But make sure ta harvest to da beat!", "Look out for the moles! You can only jump on the beat!", "I am ready to go!!"]
+var texts = ["Hello there y'all! I need sum' helpin' with 'dem there beets!", "But make sure ta harvest to da beat!", "Look out for the moles! You can only jump on the beat!", "Use Q W E and Space to collect beets and jump!", "I am ready to go!!"]
 var current_text = 0
 @onready var text_timer = $TextTimer
 enum states {SLIDE_IN, DISPLAY_TEXT, WAIT}
@@ -87,11 +90,26 @@ func _render_text():
 	speech_label.set_text(text)
 	text_timer.set_wait_time(text.length() / 20.0)
 	text_timer.start()
-	if current_text == 3:
+	_play_speech(current_text)
+	if current_text == 4:
 		speech_box.set_texture(turnip_speech)
 		animation_player.play("talk")
 	else:
 		animation_player.play("talk_potato")
+	
+func _play_speech(speech_number):
+	match speech_number:
+		0:
+			$SFX.set_stream(potato_speech_sound1)
+		1:
+			$SFX.set_stream(potato_speech_sound2)
+		2:
+			$SFX.set_stream(potato_speech_sound3)
+		3:
+			$SFX.set_stream(potato_speech_sound4)
+		4:
+			$SFX.set_stream(turnip_speech_sound)
+	$SFX.play()
 
 func _slide_in_quest_giver():
 	move_questgiver = true

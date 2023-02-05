@@ -225,7 +225,8 @@ func end_round():
 	playerController.end_animation()
 	playerController.connect("victory_animation_done", _on_animation_finished)
 	tractor.stop()
-	background.stop()	
+	background.stop()
+	beat_miss_indicator.hide()
 
 func _on_animation_finished():
 	FadeBlack.fade_in_black()

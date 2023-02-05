@@ -1,12 +1,17 @@
-[gd_scene load_steps=30 format=3 uid="uid://ccsn6ccthu706"]
+[gd_scene load_steps=35 format=3 uid="uid://ccsn6ccthu706"]
 
 [ext_resource type="Script" path="res://scripts/level_select.gd" id="1_v00s8"]
+[ext_resource type="Texture2D" uid="uid://8dmebkjl1rlp" path="res://sprites/level_select.png" id="2_asan8"]
 [ext_resource type="Texture2D" uid="uid://cbamm0uxs5aee" path="res://sprites/text_board.png" id="2_rcl7u"]
-[ext_resource type="Theme" path="res://sprites/pixelfont.tres" id="3_xob40"]
-[ext_resource type="LabelSettings" path="res://sprites/pixelfont_label.tres" id="4_2h6a0"]
+[ext_resource type="Script" path="res://scenes/ScrollContainer.gd" id="3_hxynu"]
+[ext_resource type="Theme" uid="uid://c6wc78uj72tgu" path="res://sprites/pixelfont.tres" id="3_xob40"]
 [ext_resource type="FontFile" uid="uid://dox7gol2t7u74" path="res://sprites/kongtext.ttf" id="5_dksj0"]
 [ext_resource type="Texture2D" uid="uid://ct8g2l6ondn1n" path="res://sprites/soundOn.png" id="6_6xnmg"]
 [ext_resource type="Texture2D" uid="uid://d1aik63g5soyp" path="res://sprites/playnip.png" id="7_5c4xj"]
+
+[sub_resource type="Theme" id="Theme_wm75b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hni54"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4aa6b"]
 
@@ -41,9 +46,18 @@ border_width_bottom = 4
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4h770"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_e4dr1"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4yla3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k5q1p"]
 font = ExtResource("5_dksj0")
-font_size = 12
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g0joi"]
+font = ExtResource("5_dksj0")
+font_size = 13
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xsk60"]
 
@@ -62,13 +76,13 @@ font_size = 12
 [node name="LevelSelect" type="CanvasLayer"]
 script = ExtResource("1_v00s8")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("2_asan8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 9
@@ -80,8 +94,11 @@ size_flags_horizontal = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 layout_mode = 2
+theme = SubResource("Theme_wm75b")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hni54")
 follow_focus = true
 horizontal_scroll_mode = 0
+script = ExtResource("3_hxynu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
 layout_mode = 2
@@ -325,6 +342,7 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="MarginContainer2"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4yla3")
 
 [node name="TitleAndDifficutly" type="MarginContainer" parent="MarginContainer2/Panel"]
 layout_mode = 1
@@ -342,7 +360,7 @@ layout_mode = 2
 size_flags_vertical = 1
 text = "Song Name
 Difficulty: Easy"
-label_settings = ExtResource("4_2h6a0")
+label_settings = SubResource("LabelSettings_k5q1p")
 
 [node name="Artist" type="MarginContainer" parent="MarginContainer2/Panel"]
 layout_mode = 1
@@ -350,8 +368,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -227.0
-offset_bottom = -174.0
+offset_left = 1.0
+offset_top = -202.0
+offset_right = 1.0
+offset_bottom = -149.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_left = 16
@@ -363,7 +383,7 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 text = "Artist: 
 CheeseBuiscuit"
-label_settings = SubResource("LabelSettings_e4dr1")
+label_settings = SubResource("LabelSettings_g0joi")
 
 [node name="KonstantineToggle" type="Sprite2D" parent="."]
 position = Vector2(461, 252)
