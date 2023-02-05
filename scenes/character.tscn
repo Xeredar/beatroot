@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bsos3ann0bf4"]
+[gd_scene load_steps=39 format=3 uid="uid://bsos3ann0bf4"]
 
 [ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_7553m"]
 [ext_resource type="Texture2D" uid="uid://wmsi8qauaac7" path="res://sprites/run1.png" id="3_f1buu"]
@@ -7,10 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://blpc8oiyxleyu" path="res://sprites/run4.png" id="6_x0xot"]
 [ext_resource type="Texture2D" uid="uid://p05co51tt4jq" path="res://sprites/run5.png" id="7_6bpqv"]
 [ext_resource type="Texture2D" uid="uid://glshe6xoyxnk" path="res://sprites/partbeet.png" id="7_a3rkk"]
+[ext_resource type="Texture2D" uid="uid://c3rge3cwiacgw" path="res://sprites/jump3.png" id="7_gs05g"]
 [ext_resource type="Texture2D" uid="uid://cmv32obawfafa" path="res://sprites/victory/v01.png" id="7_wmkog"]
+[ext_resource type="Texture2D" uid="uid://yckvmxapavfj" path="res://sprites/jump2.png" id="8_eblnm"]
 [ext_resource type="Texture2D" uid="uid://c5dg07sesw7b8" path="res://sprites/partnip.png" id="8_fi1g5"]
 [ext_resource type="Texture2D" uid="uid://cttcaceldm6w5" path="res://sprites/victory/v02.png" id="8_w5keo"]
 [ext_resource type="Texture2D" uid="uid://deosll7pfxw8c" path="res://sprites/partcar.png" id="9_rpu6s"]
+[ext_resource type="Texture2D" uid="uid://dkpp3l1elnroc" path="res://sprites/jump1.png" id="9_u02h7"]
 [ext_resource type="Texture2D" uid="uid://byep1lhm0oaav" path="res://sprites/victory/v03.png" id="9_y3mga"]
 [ext_resource type="Texture2D" uid="uid://b6gv6bs8e3b7" path="res://sprites/victory/v04.png" id="10_ypdsk"]
 [ext_resource type="Texture2D" uid="uid://c0nhg8rd3gq2i" path="res://sprites/victory/v05.png" id="11_rq5l8"]
@@ -55,6 +58,30 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_gs05g")
+}],
+"loop": true,
+"name": &"jump_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_eblnm")
+}],
+"loop": true,
+"name": &"jump_mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_u02h7")
+}],
+"loop": true,
+"name": &"jump_up",
+"speed": 5.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jdx8a"]
@@ -169,6 +196,7 @@ one_way_collision = true
 z_index = 3
 position = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_yti8s")
+animation = &"jump_down"
 autoplay = "default"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]

@@ -42,7 +42,14 @@ func _physics_process(delta) -> void:
 				current_jumps += 1
 		else:
 			current_jumps += 1
-
+	if velocity.y < -1:
+		$AnimatedSprite2D.play("jump_up")
+	elif velocity.y > 1:
+		$AnimatedSprite2D.play("jump_down")
+	elif is_on_floor():
+		$AnimatedSprite2D.play("default")
+	else:
+		$AnimatedSprite2D.play("jump_mid")
 
 func _set_grace_true() -> void:
 	is_grace = true

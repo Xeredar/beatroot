@@ -23,6 +23,6 @@ func setKeyName(keyName: String):
 		var sprite = Sprite2D.new()
 		add_child(sprite)
 		sprite.set_texture(space_sprite)
-		sprite.set_offset(Vector2(0, 10))
+		sprite.set_offset(Vector2(8, 10))
 	else:
 		text = keyName
