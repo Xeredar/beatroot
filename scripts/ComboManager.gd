@@ -9,6 +9,7 @@ var maximumBeats = 0
 var perfectBeats = 0
 var greatBeats = 0
 var konstantinToggle = false
+var currentLevel = ""
 
 func reset():
 	currentComboCount = 0
@@ -19,6 +20,11 @@ func reset():
 	maximumBeats = 0
 	perfectBeats = 0
 	greatBeats = 0
+
+
+func setLevel(name: String) -> void:
+	currentLevel = name
+
 
 func hitTheBeat():
 	currentComboCount += 1

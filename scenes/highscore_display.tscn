@@ -19,16 +19,39 @@ grow_vertical = 2
 layout_mode = 2
 texture = ExtResource("1_15bsi")
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-offset_left = 90.0
-offset_top = 15.0
-offset_right = 390.0
-offset_bottom = 255.0
+[node name="Label2" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 237.0
+offset_right = 464.0
+offset_bottom = 256.0
+text = "Press Space for Level Select"
+label_settings = ExtResource("2_kxbyk")
+horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer2"]
-layout_mode = 2
-text = "Highscores
-"
+[node name="Label3" type="Label" parent="."]
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 467.0
+offset_bottom = 30.0
+text = "Highscores"
+label_settings = ExtResource("2_kxbyk")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 91.0
+offset_top = 36.0
+offset_right = 395.0
+offset_bottom = 226.0
+text = "1. Konstantin 9999
+2. Konstantin 9999
+3. Konstantin 9999
+4. Konstantin 9999
+5. Konstantin 9999
+6. Konstantin 9999
+7. Konstantin 9999
+8. Konstantin 9999
+9. Konstantin 9999
+10. Konstantin 9999"
 label_settings = ExtResource("2_kxbyk")
 horizontal_alignment = 1
 script = ExtResource("3_6u3m7")

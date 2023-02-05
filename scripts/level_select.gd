@@ -96,7 +96,8 @@ func _on_song_5_button_pressed():
 
 func _on_play_button_pressed():
 	print("Loading Song: " + str(selected_song))
-	get_tree().change_scene_to_file("res://scenes/" + allSongScenes[selected_song] + ".tscn")
+	ComboManager.currentLevel = allSongScenes[selected_song]
+	get_tree().change_scene_to_file("res://scenes/" + ComboManager.currentLevel + ".tscn")
 
 func _on_button_pressed():
 	sound_enabled = !sound_enabled
