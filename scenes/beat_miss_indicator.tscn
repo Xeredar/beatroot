@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dguvah2kjaooh"]
+[gd_scene load_steps=5 format=3 uid="uid://cnfxsxxmfjufp"]
 
-[ext_resource type="Texture2D" uid="uid://2oaxenmvi2uq" path="res://sprites/icon.svg" id="1_jxorc"]
+[ext_resource type="Texture2D" uid="uid://cf7c7hi2ukbft" path="res://sprites/ouch.png" id="1_hh575"]
 [ext_resource type="Script" path="res://scripts/Beat_Miss_Indicator.gd" id="2_otwye"]
 
-[sub_resource type="Animation" id="Animation_lgm32"]
+[sub_resource type="Animation" id="Animation_csfow"]
 resource_name = "fade"
 length = 0.2
 tracks/0/type = "value"
@@ -31,19 +31,19 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdy8i"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6wnt8"]
 _data = {
-"fade": SubResource("Animation_lgm32")
+"fade": SubResource("Animation_csfow")
 }
 
 [node name="Beat_Miss_Indicator" type="Sprite2D"]
 modulate = Color(1, 1, 1, 0)
 z_index = 10
 scale = Vector2(2, 2)
-texture = ExtResource("1_jxorc")
+texture = ExtResource("1_hh575")
 script = ExtResource("2_otwye")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_pdy8i")
+"": SubResource("AnimationLibrary_6wnt8")
 }

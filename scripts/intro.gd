@@ -19,7 +19,7 @@ var move_questgiver = false
 var questgiver_target = Vector2(87, 130)
 var potato_target = Vector2(350, 130)
 var speed = 200
-var texts = ["Hello there y'all! I need sum' helpin' with 'dem there beets!", "But make sure ta harvest to da beat!", "Look out for the moles! You can only jump on the beat!", "Use Q W E and Space to collect beets and jump!", "I am ready to go!!"]
+var texts = ["Howdy y'all! I'm fur real behind on this year's beat root harvest.", "Howl I ever finish it in time?", "That's ruff... Think I can help?", "That would be pawsome! Just don't break ma tractor and beware of 'em pesky moles!", "Use Q, W, E and Space ta work your tail off!", "But remember you have ta stay on beat!", "You can hound on me!"]
 var current_text = 0
 @onready var text_timer = $TextTimer
 enum states {SLIDE_IN, DISPLAY_TEXT, WAIT}
@@ -91,10 +91,11 @@ func _render_text():
 	text_timer.set_wait_time(text.length() / 20.0)
 	text_timer.start()
 	_play_speech(current_text)
-	if current_text == 4:
+	if current_text == 2 or current_text == 6:
 		speech_box.set_texture(turnip_speech)
 		animation_player.play("talk")
 	else:
+		speech_box.set_texture(potato_speech)
 		animation_player.play("talk_potato")
 	
 func _play_speech(speech_number):
@@ -104,10 +105,14 @@ func _play_speech(speech_number):
 		1:
 			$SFX.set_stream(potato_speech_sound2)
 		2:
-			$SFX.set_stream(potato_speech_sound3)
+			$SFX.set_stream(turnip_speech_sound)
 		3:
-			$SFX.set_stream(potato_speech_sound4)
+			$SFX.set_stream(potato_speech_sound3)
 		4:
+			$SFX.set_stream(potato_speech_sound4)
+		5:
+			$SFX.set_stream(potato_speech_sound3)
+		6:
 			$SFX.set_stream(turnip_speech_sound)
 	$SFX.play()
 
