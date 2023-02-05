@@ -58,10 +58,10 @@ func hit():
 	hit_particle1.set_emitting(true)
 	hit_particle2.set_emitting(true)
 	hit_particle3.set_emitting(true)
-	
+
 func _set_grace_false() -> void:
 	is_grace = false
-	
+
 func end_animation():
 	game_ended = true
 	$AnimatedSprite2D.hide()

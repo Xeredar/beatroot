@@ -39,8 +39,9 @@ func _process(delta):
 		first_time = false
 		return
 	if Input.is_action_just_pressed("jump"):
-		get_tree().change_scene_to_file("res://scenes/" + allSongScenes[selected_song] + ".tscn")
 		MenuAudio.stop_music()
+		ComboManager.currentLevel = allSongScenes[selected_song]
+		get_tree().change_scene_to_file("res://scenes/" + ComboManager.currentLevel + ".tscn")
 	if Input.is_action_just_pressed("down"):
 		print("Down Pressed!")
 		if selected_song < allSongTitles.size() - 1:
