@@ -13,7 +13,7 @@ func is_new_highscore(level: String, points: int) -> bool:
 		return true
 
 	var last_entry = highscores.back()
-	return last_entry != null and points > last_entry[1]
+	return last_entry != null and points > int(last_entry["points"])
 
 
 func add_highscore_entry(level: String, name: String = "Default", points: int = 0) -> void:
