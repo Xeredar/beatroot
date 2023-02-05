@@ -1,5 +1,5 @@
 extends CanvasLayer
-@onready var continue_label : Label = $ContinueContainer/Label
+@onready var continue_label : Label = $ContinueLabel
 @onready var accuracy_label : Label = $ResultsContainer/Label
 @onready var points_label : Label = $ResultsContainer2/Label
 @onready var first_time = true
@@ -21,8 +21,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 	elif Input.is_action_just_pressed("turnip"):
-		# TODO: Replace with actual reload functionality
-		get_tree().change_scene_to_file("res://scenes/song_1.tscn")
+		get_tree().change_scene_to_file("res://scenes/" + ComboManager.currentLevel + ".tscn")
 	elif Input.is_action_just_pressed("carrot"):
 		get_tree().change_scene_to_file("res://scenes/highscore_display.tscn")
 

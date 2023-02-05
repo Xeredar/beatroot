@@ -18,15 +18,16 @@ grow_vertical = 2
 layout_mode = 2
 texture = ExtResource("1_r7ty5")
 
-[node name="Highscore_Name" type="TextEdit" parent="."]
-offset_left = 139.0
-offset_top = 129.0
-offset_right = 339.0
-offset_bottom = 169.0
-placeholder_text = "Please enter your name"
+[node name="Highscore_Name" type="LineEdit" parent="."]
+offset_left = 125.0
+offset_top = 133.0
+offset_right = 345.0
+offset_bottom = 164.0
+placeholder_text = "Enter your name"
+alignment = 1
+max_length = 10
 context_menu_enabled = false
 shortcut_keys_enabled = false
-drag_and_drop_selection_enabled = false
 middle_mouse_paste_enabled = false
 
 [node name="Label2" type="Label" parent="."]
