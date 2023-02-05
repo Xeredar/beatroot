@@ -27,6 +27,7 @@ const warmupTime = 3.0
 const perfect_distance = 0.1
 const great_distance = 0.5
 var timeLeft = 0.0
+var didStartBeats = false
 @onready var sfx = $"../LevelContent/SFX"
 @onready var background = $"../LevelContent/Background"
 
@@ -35,6 +36,7 @@ const BeatKeyScript = preload("res://scripts/BeatKey.gd")
 @onready var camera = $"../LevelContent/Camera"
 @onready var tractor = $"../LevelContent/Tractor"
 @onready var playerController : CharacterBody2D = $"../LevelContent/Character"
+@onready var beatIndicator = $"../LevelContent/BeatTimer"
 var beats = []
 var beatKeys = []
 var obstacles = []
@@ -99,6 +101,7 @@ func _spawnBigObstacle(beatPosition):
 func _ready():
 	ComboManager.reset()
 	bps = songBPM / 60.0
+	timer = -beatStartOffset
 
 	seed(songResourceName.hash())
 
@@ -158,6 +161,9 @@ func _process(delta):
 #		get_tree().change_scene_to_file("res://scenes/results_screen.tscn")
 
 	timer += delta
+	if didStartBeats == false && timer >= 0:
+		beatIndicator.start_with_bpm(songBPM)
+		didStartBeats = true
 	if timer > 1.0/bps - graceTime * 0.5:
 		beat_grace_start.emit()
 	if timer > 1.0/bps + graceTime * 0.5:
@@ -231,7 +237,7 @@ func end_round():
 
 func _on_animation_finished():
 	FadeBlack.fade_in_black()
-	
+
 func play_sound(sound):
 	if ComboManager.konstantinToggle == true:
 		return

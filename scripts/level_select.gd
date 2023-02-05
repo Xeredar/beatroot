@@ -26,12 +26,12 @@ var allSongArtists = []
 var allDifficultis = []
 var allSongLabels = []
 var selected_song = 0
-var allSongScenes = ["song_1", "song_2", "song_3", "song_4", "song5"]
+var allSongScenes = ["song_6", "song_1", "song_8", "song_5", "song_7"]
 
 func _ready():
-	allSongTitles = ["Song1", "Song2", "Song3", "Song4", "Song5", "Song6"]
-	allSongArtists = ["Cheese", "Pizza", "Tomato", "Apple", "Pie", "Ketchup"]
-	allDifficultis = [0, 0, 1, 1, 2, 2]
+	allSongTitles = ["Feathers and Pillow", "Silhoutte Pt. II", "Night Rave", "None Of It", "Knife Crayons"]
+	allSongArtists = ["Sara Afonso", "whatfunk", "Jason Shaw", "whatfunk", "Gigakoops"]
+	allDifficultis = [0, 1, 1, 1, 2]
 	allSongLabels = [song1_label, song2_label, song3_label, song4_label, song5_label, song6_label]
 	fill_songlist()
 	fill_details()
