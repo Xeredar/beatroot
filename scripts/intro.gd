@@ -13,12 +13,14 @@ var potato_speech_sound3 = preload("res://sounds/PotatoSpeech3.ogg")
 var potato_speech_sound4 = preload("res://sounds/PotatoSpeech4.ogg")
 var turnip_speech_sound = preload("res://sounds/turnipSpeech.ogg")
 var text_scrolling = false
+var input_controller = false
 var text = ""
 var text_percentage = 0
 var move_questgiver = false
 var questgiver_target = Vector2(87, 130)
 var potato_target = Vector2(350, 130)
 var speed = 200
+var controller_text = "Use A, B, X and Y ta work your tail off!"
 var texts = ["Howdy y'all! I'm fur real behind on this year's beat root harvest.", "Howl I ever finish it in time?", "That's ruff... Think I can help?", "That would be pawsome! Just don't break ma tractor and beware of 'em pesky moles!", "Use Q, W, E and Space ta work your tail off!", "But remember you have ta stay on beat!", "You can hound on me!"]
 var current_text = 0
 @onready var text_timer = $TextTimer
@@ -87,7 +89,10 @@ func _render_text():
 	speech_box.show()
 	text = texts[current_text]
 	text_scrolling = true
-	speech_label.set_text(text)
+	if ComboManager.controller_enabled and current_text == 4:
+		speech_label.set_text(controller_text)
+	else:
+		speech_label.set_text(text)
 	text_timer.set_wait_time(text.length() / 20.0)
 	text_timer.start()
 	_play_speech(current_text)

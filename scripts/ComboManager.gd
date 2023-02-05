@@ -10,6 +10,7 @@ var perfectBeats = 0
 var greatBeats = 0
 var konstantinToggle = false
 var currentLevel = ""
+var controller_enabled = false
 
 func reset():
 	currentComboCount = 0

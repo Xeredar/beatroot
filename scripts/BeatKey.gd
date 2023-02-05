@@ -19,10 +19,24 @@ func _process(delta):
 	position.x -= speed * delta
 
 func setKeyName(keyName: String):
+	var finalKey = keyName
+	if ComboManager.controller_enabled:
+		match keyName:
+			"Q":
+				finalKey = "B"
+			"W":
+				finalKey = "X"
+			"E":
+				finalKey = "Y"
+			
 	if keyName == "␣":
-		var sprite = Sprite2D.new()
-		add_child(sprite)
-		sprite.set_texture(space_sprite)
-		sprite.set_offset(Vector2(8, 10))
+		if !ComboManager.controller_enabled:
+			var sprite = Sprite2D.new()
+			add_child(sprite)
+			sprite.set_texture(space_sprite)
+			sprite.set_offset(Vector2(8, 10))
+		else:
+			finalKey = "A"
+			text = finalKey
 	else:
-		text = keyName
+		text = finalKey
