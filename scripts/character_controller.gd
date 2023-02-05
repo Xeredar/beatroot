@@ -53,6 +53,7 @@ func end_animation():
 	$AnimatedSprite2D.hide()
 	$VictoryAnimatedSprite.show()
 	$VictoryAnimatedSprite.play("default")
+	$AnimationPlayer.play("stopping")
 
 func _on_victory_animated_sprite_animation_finished():
 	$VictoryAnimatedSprite.stop()

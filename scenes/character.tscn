@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bsos3ann0bf4"]
+[gd_scene load_steps=33 format=3 uid="uid://bsos3ann0bf4"]
 
 [ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_7553m"]
 [ext_resource type="Texture2D" uid="uid://wmsi8qauaac7" path="res://sprites/run1.png" id="3_f1buu"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://du1dy68rbv6u" path="res://sprites/victory/v18.png" id="24_mkpu1"]
 [ext_resource type="Texture2D" uid="uid://chklltdpwymvv" path="res://sprites/victory/v19.png" id="25_edxy2"]
 [ext_resource type="Texture2D" uid="uid://6oiha2b6fa8u" path="res://sprites/victory/v20.png" id="26_5ytml"]
+[ext_resource type="Texture2D" uid="uid://2socem6iatmg" path="res://sprites/dirt3.png" id="27_4ly3a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_717w1"]
 size = Vector2(80, 80)
@@ -121,6 +122,39 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_axaec"]
+resource_name = "stopping"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VictoryAnimatedSprite/CPUParticles2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-68, 66), Vector2(2, 66)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VictoryAnimatedSprite/CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_js3o1"]
+_data = {
+"stopping": SubResource("Animation_axaec")
+}
+
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_7553m")
 
@@ -138,5 +172,24 @@ autoplay = "default"
 visible = false
 position = Vector2(58, -28)
 sprite_frames = SubResource("SpriteFrames_jdx8a")
+frame = 19
+frame_progress = 1.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="VictoryAnimatedSprite"]
+position = Vector2(2, 66)
+rotation = 3.83972
+emitting = false
+amount = 6
+explosiveness = 0.26
+texture = ExtResource("27_4ly3a")
+initial_velocity_min = 292.93
+initial_velocity_max = 292.93
+angle_min = -232.8
+angle_max = -29.2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_js3o1")
+}
 
 [connection signal="animation_finished" from="VictoryAnimatedSprite" to="." method="_on_victory_animated_sprite_animation_finished"]
