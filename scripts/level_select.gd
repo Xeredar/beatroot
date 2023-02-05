@@ -26,7 +26,7 @@ var allSongArtists = []
 var allDifficultis = []
 var allSongLabels = []
 var selected_song = 0
-var allSongScenes = ["song_1", "song_2", "song_3", "song_4", "song5"]
+var allSongScenes = ["song_1", "song_2", "song_3", "song_4", "song_5", "song_6"]
 
 func _ready():
 	allSongTitles = ["Song1", "Song2", "Song3", "Song4", "Song5", "Song6"]
