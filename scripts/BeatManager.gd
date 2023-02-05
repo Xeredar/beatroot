@@ -26,6 +26,7 @@ var bps = 122.0 / 60.0
 const warmupTime = 3.0
 const perfect_distance = 0.1
 const great_distance = 0.5
+var songLength = 0.0
 var timeLeft = 0.0
 var didStartBeats = false
 @onready var sfx = $"../LevelContent/SFX"
@@ -110,7 +111,8 @@ func _ready():
 	add_child(musicPlayer)
 	musicPlayer.set_stream(song)
 	musicPlayer.play()
-	timeLeft = song.get_length() + 3.0
+	songLength = song.get_length() + 3.0
+	timeLeft = songLength
 
 	var warmupBeatCount = floor(warmupTime * bps)
 	var beatLength = song.get_length() - warmupBeatCount / bps

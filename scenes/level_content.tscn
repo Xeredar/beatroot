@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq0mlm1mc0rys"]
+[gd_scene load_steps=17 format=3 uid="uid://dq0mlm1mc0rys"]
 
 [ext_resource type="PackedScene" uid="uid://bsos3ann0bf4" path="res://scenes/character.tscn" id="1_eyry8"]
 [ext_resource type="Script" path="res://scripts/BackgroundManager.gd" id="2_y46pm"]
@@ -8,12 +8,19 @@
 [ext_resource type="Texture2D" uid="uid://doc8phuvpvuj" path="res://sprites/bg_0.png" id="6_qquui"]
 [ext_resource type="PackedScene" uid="uid://dj7ed8d44qq2n" path="res://scenes/beat_timer.tscn" id="7_f384k"]
 [ext_resource type="PackedScene" uid="uid://c3c5l0aox62ai" path="res://scenes/tractor.tscn" id="8_teqq6"]
-[ext_resource type="PackedScene" path="res://scenes/MultiplierView.tscn" id="9_yg4hf"]
+[ext_resource type="PackedScene" uid="uid://cmilhk0xd02lv" path="res://scenes/MultiplierView.tscn" id="9_yg4hf"]
 [ext_resource type="Script" path="res://scripts/PointsLabel.gd" id="10_1rdvp"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="11_jrq7a"]
+[ext_resource type="Script" path="res://scripts/SongProgressView.gd" id="12_a5s4o"]
+[ext_resource type="Texture2D" uid="uid://def55tk5e6m3c" path="res://sprites/bar.png" id="13_7apv6"]
+[ext_resource type="Texture2D" uid="uid://dl3wavkwni3o4" path="res://sprites/bart.png" id="14_msf30"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r27ya"]
 size = Vector2(480, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f58np"]
+outline_size = 3
+outline_color = Color(0.0588235, 0.352941, 0.462745, 1)
 
 [node name="LevelContent" type="Node2D"]
 
@@ -76,6 +83,7 @@ offset_top = 10.0
 offset_right = 240.0
 offset_bottom = 36.0
 text = "Points"
+label_settings = SubResource("LabelSettings_f58np")
 script = ExtResource("10_1rdvp")
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -83,3 +91,20 @@ offset = Vector2(240, 135)
 script = ExtResource("11_jrq7a")
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
+
+[node name="SongProgressView" type="Node2D" parent="."]
+position = Vector2(243, 23)
+script = ExtResource("12_a5s4o")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="SongProgressView"]
+offset_left = -120.0
+offset_top = -6.0
+offset_right = 115.0
+offset_bottom = 34.0
+texture_under = ExtResource("13_7apv6")
+texture_progress = ExtResource("13_7apv6")
+tint_progress = Color(0.486275, 1, 0.458824, 1)
+
+[node name="Bart" type="Sprite2D" parent="SongProgressView"]
+position = Vector2(-116, 1)
+texture = ExtResource("14_msf30")

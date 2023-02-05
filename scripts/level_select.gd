@@ -31,7 +31,7 @@ func _ready():
 	allSongArtists = ["Sara Afonso", "whatfunk", "Jason Shaw", "whatfunk", "Gigakoops"]
 	allDifficultis = [0, 1, 1, 1, 2]
 	allSongLabels = [song1_label, song2_label, song3_label, song4_label, song5_label]
-	fill_songlist()
+	# fill_songlist()
 	fill_details()
 
 func _process(delta):
