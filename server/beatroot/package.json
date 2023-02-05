@@ -1,0 +1,12 @@
+{
+  "name": "beatroot",
+  "version": "0.1.0",
+  "devDependencies": {
+    "wrangler": "2.6.0"
+  },
+  "private": true,
+  "scripts": {
+    "start": "wrangler dev",
+    "deploy": "wrangler publish"
+  }
+}

@@ -2,3 +2,4 @@
 .godot/
 .DS_Store
 highscores.data
+server/beatroot/node_modules
